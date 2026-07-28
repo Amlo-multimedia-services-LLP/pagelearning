@@ -41,19 +41,20 @@ export function Navbar({ onOpenDemoModal }: NavbarProps) {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+      className={`relative z-40 transition-all duration-300 ${
         isScrolled
-          ? "glass-nav py-3 border-b border-white/10 shadow-lg"
-          : "bg-[#153947] py-4 border-b border-white/10"
+          ? "bg-white/80 backdrop-blur-xl border-b border-gray-200 shadow-sm py-3"
+          : "bg-transparent py-4 border-b border-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo Mark */}
           <Link href="/" className="flex items-center gap-3">
-            <BrandLogo variant="dark" />
-            <div className="hidden lg:block border-l border-white/20 pl-3">
-              <LegacyBadge />
+            <BrandLogo variant="dark" className="hidden" /> {/* Hiding dark variant if it exists from previous state */}
+            <BrandLogo variant="light" className="!text-[#153947]" />
+            <div className="hidden lg:block border-l border-gray-300 pl-3">
+              <LegacyBadge className="!bg-[#F3F4F6] !border-gray-200 !text-[#153947]" />
             </div>
           </Link>
 
@@ -72,23 +73,23 @@ export function Navbar({ onOpenDemoModal }: NavbarProps) {
                   >
                     <Link
                       href={link.href}
-                      className={`inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-semibold transition-colors ${
+                      className={`inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-all ${
                         pathname.startsWith("/courses")
-                          ? "text-[#E5B44D] bg-white/10"
-                          : "text-[#FFFDF7] hover:text-[#E5B44D] hover:bg-white/5"
+                          ? "text-[#153947] font-semibold bg-gray-100"
+                          : "text-gray-600 hover:text-[#153947] hover:bg-gray-50"
                       }`}
                     >
                       <span>{link.name}</span>
-                      <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${coursesDropdownOpen ? "rotate-180 text-[#E5B44D]" : ""}`} />
+                      <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${coursesDropdownOpen ? "rotate-180 text-[#153947]" : ""}`} />
                     </Link>
 
                     {/* Glassmorphism Dropdown */}
                     {coursesDropdownOpen && (
                       <div className="absolute top-full left-0 w-72 pt-2 animate-fade-in-up">
-                        <div className="bg-[#153947]/95 backdrop-blur-xl border border-white/15 rounded-2xl p-2.5 shadow-2xl space-y-1">
+                        <div className="bg-white/95 backdrop-blur-xl border border-gray-200 rounded-2xl p-2.5 shadow-2xl space-y-1">
                           <Link
                             href="/courses"
-                            className="block px-3 py-2 rounded-xl bg-white/10 hover:bg-[#E5B44D] hover:text-[#153947] text-white text-xs font-bold uppercase tracking-wider transition-colors mb-1"
+                            className="block px-3 py-2 rounded-xl bg-gray-50 hover:bg-[#153947] hover:text-white text-[#153947] text-xs font-bold uppercase tracking-wider transition-colors mb-1"
                           >
                             Explore All Courses →
                           </Link>
@@ -96,13 +97,13 @@ export function Navbar({ onOpenDemoModal }: NavbarProps) {
                             <Link
                               key={item.path}
                               href={item.path}
-                              className="block p-2.5 rounded-xl hover:bg-white/10 text-white transition-colors group"
+                              className="block p-2.5 rounded-xl hover:bg-gray-50 text-gray-700 transition-colors group"
                             >
-                              <div className="text-sm font-semibold text-[#FFFDF7] group-hover:text-[#E5B44D] transition-colors flex items-center justify-between">
+                              <div className="text-sm font-semibold text-[#153947] transition-colors flex items-center justify-between">
                                 <span>{item.title}</span>
                                 <ArrowRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity text-[#E5B44D]" />
                               </div>
-                              <div className="text-[11px] text-gray-300 mt-0.5">
+                              <div className="text-[11px] text-gray-500 mt-0.5">
                                 {item.desc}
                               </div>
                             </Link>
@@ -118,10 +119,10 @@ export function Navbar({ onOpenDemoModal }: NavbarProps) {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`px-3.5 py-2 rounded-lg text-sm font-semibold transition-colors ${
+                  className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-all ${
                     isActive
-                      ? "text-[#E5B44D] bg-white/10"
-                      : "text-[#FFFDF7] hover:text-[#E5B44D] hover:bg-white/5"
+                      ? "text-[#153947] font-semibold bg-gray-100"
+                      : "text-gray-600 hover:text-[#153947] hover:bg-gray-50"
                   }`}
                 >
                   {link.name}
@@ -134,7 +135,7 @@ export function Navbar({ onOpenDemoModal }: NavbarProps) {
           <div className="hidden sm:flex items-center gap-3">
             <a
               href="tel:+917736164363"
-              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium text-gray-300 hover:text-white transition-colors border border-white/10"
+              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium text-gray-600 hover:text-[#153947] transition-colors border border-gray-200 hover:border-gray-300"
             >
               <Phone className="w-3.5 h-3.5 text-[#E5B44D]" />
               <span>+91 77361 64363</span>
@@ -142,9 +143,9 @@ export function Navbar({ onOpenDemoModal }: NavbarProps) {
 
             <button
               onClick={() => onOpenDemoModal()}
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#E5B44D] hover:bg-[#F2C564] text-[#153947] font-bold text-sm shadow-md transition-all hover:scale-[1.02] active:scale-100"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#153947] hover:bg-[#112a35] text-white font-semibold text-sm shadow-md transition-all hover:scale-[1.02] active:scale-100"
             >
-              <Sparkles className="w-4 h-4 fill-[#153947]" />
+              <Sparkles className="w-4 h-4 text-[#E5B44D]" />
               <span>Book Free Demo</span>
             </button>
           </div>
@@ -153,14 +154,14 @@ export function Navbar({ onOpenDemoModal }: NavbarProps) {
           <div className="flex md:hidden items-center gap-2">
             <button
               onClick={() => onOpenDemoModal()}
-              className="px-3 py-1.5 rounded-lg bg-[#E5B44D] text-[#153947] font-bold text-xs"
+              className="px-3 py-1.5 rounded-lg bg-[#153947] text-white font-semibold text-xs"
             >
               Free Demo
             </button>
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-white hover:bg-white/10 transition-colors"
+              className="p-2 rounded-lg text-[#153947] hover:bg-gray-100 transition-colors"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -170,21 +171,21 @@ export function Navbar({ onOpenDemoModal }: NavbarProps) {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#153947] border-b border-white/15 px-4 pt-3 pb-6 space-y-3 animate-fade-in-up">
+        <div className="md:hidden bg-white border-b border-gray-200 px-4 pt-3 pb-6 space-y-3 animate-fade-in-up shadow-xl absolute top-full left-0 right-0">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               href={link.href}
               onClick={() => setMobileMenuOpen(false)}
               className={`block px-4 py-2.5 rounded-xl text-base font-semibold ${
-                pathname === link.href ? "bg-[#E5B44D] text-[#153947]" : "text-white hover:bg-white/10"
+                pathname === link.href ? "bg-gray-100 text-[#153947]" : "text-gray-700 hover:bg-gray-50"
               }`}
             >
               {link.name}
             </Link>
           ))}
 
-          <div className="pt-2 border-t border-white/10">
+          <div className="pt-2 border-t border-gray-100">
             <p className="text-xs font-bold text-[#E5B44D] uppercase tracking-wider px-4 mb-2">
               Our Courses
             </p>
@@ -193,7 +194,7 @@ export function Navbar({ onOpenDemoModal }: NavbarProps) {
                 key={course.path}
                 href={course.path}
                 onClick={() => setMobileMenuOpen(false)}
-                className="block px-4 py-2 text-sm text-gray-200 hover:text-white"
+                className="block px-4 py-2 text-sm text-gray-600 hover:text-[#153947]"
               >
                 • {course.title}
               </Link>
@@ -206,7 +207,7 @@ export function Navbar({ onOpenDemoModal }: NavbarProps) {
                 setMobileMenuOpen(false);
                 onOpenDemoModal();
               }}
-              className="w-full py-3 rounded-xl bg-[#E5B44D] text-[#153947] font-bold text-center text-sm shadow-md"
+              className="w-full py-3 rounded-xl bg-[#153947] text-white font-bold text-center text-sm shadow-md"
             >
               Book Free Demo Session
             </button>
@@ -216,3 +217,4 @@ export function Navbar({ onOpenDemoModal }: NavbarProps) {
     </header>
   );
 }
+

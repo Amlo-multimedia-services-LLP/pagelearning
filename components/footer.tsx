@@ -5,6 +5,20 @@ import Link from "next/link";
 import { Phone, Mail, MapPin, MessageSquare, ArrowUp, Sparkles } from "lucide-react";
 import { BrandLogo, LegacyBadge, GeometricBrandMotif } from "@/components/brand-logo";
 
+const InstagramIcon = ({ className }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+  </svg>
+);
+
+const FacebookIcon = ({ className }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+  </svg>
+);
+
 interface FooterProps {
   onOpenDemoModal: (course?: string) => void;
 }
@@ -15,7 +29,7 @@ export function Footer({ onOpenDemoModal }: FooterProps) {
   };
 
   return (
-    <footer className="bg-[#153947] text-[#FFFDF7] border-t border-white/10 relative overflow-hidden">
+    <footer className="bg-white text-gray-900 border-t border-gray-200 relative overflow-hidden">
       {/* Decorative Wave & Top Border Line */}
       <div className="h-1.5 w-full bg-gradient-to-r from-[#E5B44D] via-[#41AAF0] to-[#E55A45]" />
 
@@ -25,46 +39,46 @@ export function Footer({ onOpenDemoModal }: FooterProps) {
           
           {/* Column 1: Brand & Legacy */}
           <div className="space-y-4">
-            <BrandLogo variant="dark" />
-            <p className="text-sm text-gray-300 leading-relaxed">
+            <BrandLogo variant="light" className="!text-[#153947]" />
+            <p className="text-sm text-gray-500 leading-relaxed">
               Developing confidence and excellence through personalized 1-on-1 guidance, micro batches, and expert mentorship since 2011.
             </p>
-            <LegacyBadge />
+            <LegacyBadge className="!bg-gray-50 !border-gray-200 !text-[#153947]" />
             <div className="pt-2">
-              <GeometricBrandMotif />
+              <GeometricBrandMotif className="opacity-20 mix-blend-multiply" />
             </div>
           </div>
 
           {/* Column 2: Quick Links */}
           <div className="space-y-4">
-            <h4 className="text-sm font-bold uppercase tracking-wider text-[#E5B44D]">
+            <h4 className="text-sm font-bold uppercase tracking-wider text-[#153947]">
               Navigation
             </h4>
             <ul className="space-y-2.5 text-sm">
               <li>
-                <Link href="/" className="hover:text-[#E5B44D] transition-colors">
+                <Link href="/" className="text-gray-500 hover:text-[#E5B44D] transition-colors">
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-[#E5B44D] transition-colors">
+                <Link href="/about" className="text-gray-500 hover:text-[#E5B44D] transition-colors">
                   About Our Legacy
                 </Link>
               </li>
               <li>
-                <Link href="/courses" className="hover:text-[#E5B44D] transition-colors">
+                <Link href="/courses" className="text-gray-500 hover:text-[#E5B44D] transition-colors">
                   All Courses Overview
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-[#E5B44D] transition-colors">
+                <Link href="/contact" className="text-gray-500 hover:text-[#E5B44D] transition-colors">
                   Contact Us & Campus Location
                 </Link>
               </li>
               <li>
                 <button
                   onClick={() => onOpenDemoModal()}
-                  className="text-[#E5B44D] hover:underline font-semibold flex items-center gap-1.5"
+                  className="text-[#E5B44D] hover:underline font-semibold flex items-center gap-1.5 mt-2"
                 >
                   <Sparkles className="w-3.5 h-3.5" />
                   <span>Book Free Demo Session</span>
@@ -75,44 +89,44 @@ export function Footer({ onOpenDemoModal }: FooterProps) {
 
           {/* Column 3: Academic Programs */}
           <div className="space-y-4">
-            <h4 className="text-sm font-bold uppercase tracking-wider text-[#E5B44D]">
+            <h4 className="text-sm font-bold uppercase tracking-wider text-[#153947]">
               Our Programs
             </h4>
-            <ul className="space-y-2.5 text-sm text-gray-300">
+            <ul className="space-y-2.5 text-sm text-gray-500">
               <li>
-                <Link href="/courses/individual-tuition" className="hover:text-white transition-colors">
-                  • Individual Tuition (Class 1 - 12)
+                <Link href="/courses/individual-tuition" className="hover:text-gray-900 transition-colors flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-gray-300" /> Individual Tuition
                 </Link>
               </li>
               <li>
-                <Link href="/courses/micro-batch" className="hover:text-white transition-colors">
-                  • Micro Batch (Max 7 Students)
+                <Link href="/courses/micro-batch" className="hover:text-gray-900 transition-colors flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-gray-300" /> Micro Batch (Max 7)
                 </Link>
               </li>
               <li>
-                <Link href="/courses/entrance-coaching" className="hover:text-white transition-colors">
-                  • Entrance Exam Coaching (JEE/NEET)
+                <Link href="/courses/entrance-coaching" className="hover:text-gray-900 transition-colors flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-gray-300" /> Entrance Coaching
                 </Link>
               </li>
               <li>
-                <Link href="/courses/scholarships" className="hover:text-white transition-colors">
-                  • Scholarship Exams (NMMS/USS/LSS)
+                <Link href="/courses/scholarships" className="hover:text-gray-900 transition-colors flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-gray-300" /> Scholarship Exams
                 </Link>
               </li>
               <li>
-                <Link href="/courses/competitive-exams" className="hover:text-white transition-colors">
-                  • Career Exams (PSC/UPSC/NET)
+                <Link href="/courses/competitive-exams" className="hover:text-gray-900 transition-colors flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-gray-300" /> Career & Competitive
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Column 4: Contact & Campus Info */}
+          {/* Column 4: Contact & Socials */}
           <div className="space-y-4">
-            <h4 className="text-sm font-bold uppercase tracking-wider text-[#E5B44D]">
+            <h4 className="text-sm font-bold uppercase tracking-wider text-[#153947]">
               Get In Touch
             </h4>
-            <div className="space-y-3 text-sm text-gray-300">
+            <div className="space-y-3 text-sm text-gray-500">
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-5 h-5 text-[#E5B44D] shrink-0 mt-0.5" />
                 <span>
@@ -122,52 +136,61 @@ export function Footer({ onOpenDemoModal }: FooterProps) {
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-[#E5B44D] shrink-0" />
                 <div className="flex flex-col">
-                  <a href="tel:+917736164363" className="hover:text-white">
+                  <a href="tel:+917736164363" className="hover:text-gray-900">
                     +91 77361 64363
-                  </a>
-                  <a href="tel:+917736464363" className="hover:text-white">
-                    +91 77364 64363
                   </a>
                 </div>
               </div>
               <div className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-[#E5B44D] shrink-0" />
-                <a href="mailto:Admin@pagelearning.in" className="hover:text-white">
-                  Admin@pagelearning.in
+                <a href="mailto:admin@pagelearning.in" className="hover:text-gray-900 font-medium">
+                  admin@pagelearning.in
                 </a>
               </div>
             </div>
 
-            <div className="pt-2 flex items-center gap-2">
+            {/* Social Media Links */}
+            <div className="pt-2 flex items-center gap-3">
+              <a
+                href="https://instagram.com/pagelearning.in"
+                target="_blank"
+                rel="noreferrer"
+                className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-pink-100 hover:text-pink-600 transition-colors"
+                title="Instagram"
+              >
+                <InstagramIcon className="w-4 h-4" />
+              </a>
+              <a
+                href="https://facebook.com/pagelearning.in"
+                target="_blank"
+                rel="noreferrer"
+                className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-blue-100 hover:text-blue-600 transition-colors"
+                title="Facebook"
+              >
+                <FacebookIcon className="w-4 h-4" />
+              </a>
               <a
                 href="https://wa.me/917736164363"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold shadow-md transition-transform hover:scale-105"
+                className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-emerald-100 hover:text-emerald-600 transition-colors"
+                title="WhatsApp"
               >
                 <MessageSquare className="w-4 h-4" />
-                <span>WhatsApp Us</span>
               </a>
-
-              <button
-                onClick={() => onOpenDemoModal()}
-                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#E5B44D] text-[#153947] font-bold text-xs shadow-md hover:bg-[#F2C564] transition-all"
-              >
-                <span>Free Demo</span>
-              </button>
             </div>
           </div>
         </div>
 
         {/* Bottom Bar & Back to top */}
-        <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-400">
+        <div className="mt-16 pt-8 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-400">
           <div>
             © 2026 Page Learning. All rights reserved. 15 Years of Educational Legacy.
           </div>
           <div className="flex items-center gap-4">
             <button
               onClick={scrollToTop}
-              className="p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+              className="p-2.5 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 transition-colors"
               title="Scroll to Top"
             >
               <ArrowUp className="w-4 h-4" />

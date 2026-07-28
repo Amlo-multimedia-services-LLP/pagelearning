@@ -11,13 +11,13 @@
   --color-brand-red: #E55A45;
   --color-brand-green: #6EB44D;
   --color-brand-purple: #775898;
-  --color-brand-cream: #FFFDF7;
+  --color-brand-cream: #FFFFFF;
   
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans), Inter, sans-serif;
-  --font-mono: var(--font-geist-mono), monospace;
-  --font-heading: var(--font-geist-sans), Inter, sans-serif;
+  --font-sans: var(--font-inter-tight), Inter, sans-serif;
+  --font-mono: monospace;
+  --font-heading: var(--font-inter-tight), Inter, sans-serif;
   --color-ring: var(--ring);
   --color-input: var(--input);
   --color-border: var(--border);
@@ -42,23 +42,23 @@
 }
 
 :root {
-  --background: #FFFDF7;
-  --foreground: #153947;
+  --background: #FFFFFF;
+  --foreground: #111827;
   --card: #FFFFFF;
-  --card-foreground: #153947;
+  --card-foreground: #111827;
   --popover: #FFFFFF;
-  --popover-foreground: #153947;
+  --popover-foreground: #111827;
   --primary: #153947;
-  --primary-foreground: #FFFDF7;
-  --secondary: #E5B44D;
-  --secondary-foreground: #153947;
-  --muted: #F5F1E6;
-  --muted-foreground: #5C6B73;
+  --primary-foreground: #FFFFFF;
+  --secondary: #FAFAFA;
+  --secondary-foreground: #111827;
+  --muted: #F3F4F6;
+  --muted-foreground: #6B7280;
   --accent: #E5B44D;
   --accent-foreground: #153947;
   --destructive: #E55A45;
-  --border: #E8E2D2;
-  --input: #E8E2D2;
+  --border: #E5E7EB;
+  --input: #E5E7EB;
   --ring: #153947;
   --radius: 0.75rem;
 }

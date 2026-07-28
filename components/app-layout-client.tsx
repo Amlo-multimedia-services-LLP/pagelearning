@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { DemoBookingModal } from "@/components/demo-booking-modal";
+import { NewsTicker } from "@/components/news-ticker";
 
 interface AppLayoutClientProps {
   children: React.ReactNode;
@@ -23,14 +24,16 @@ export function AppLayoutClient({ children }: AppLayoutClientProps) {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FFFDF7] text-[#153947]">
-      <Navbar onOpenDemoModal={handleOpenDemoModal} />
+    <div className="min-h-screen flex flex-col bg-white text-gray-900">
+      <div className="fixed top-0 left-0 right-0 z-50">
+        <NewsTicker />
+        <Navbar onOpenDemoModal={handleOpenDemoModal} />
+      </div>
       
-      {/* Main Page Content - Margin top for sticky header */}
-      <main className="flex-1 pt-20">
+      {/* Main Page Content - Margin top for sticky header + ticker */}
+      <main className="flex-1 pt-[104px]">
         {React.Children.map(children, (child) => {
           if (React.isValidElement(child)) {
-            // Pass modal trigger prop if child accepts it
             return React.cloneElement(child as React.ReactElement<{ onOpenDemoModal?: (course?: string) => void }>, {
               onOpenDemoModal: handleOpenDemoModal,
             });
