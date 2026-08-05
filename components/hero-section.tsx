@@ -73,7 +73,7 @@ export function HeroSection() {
   const nextSlide = slides[(currentSlide + 1) % slides.length];
 
   return (
-    <section className="relative w-full h-[80vh] min-h-[480px] p-0 m-0 overflow-hidden bg-slate-950 text-white flex flex-col justify-between">
+    <section className="relative w-full h-[86vh] sm:h-[90vh] min-h-[480px] p-0 m-0 overflow-hidden bg-slate-950 text-white flex flex-col justify-between">
       {/* Edge-to-Edge Background Image Carousel (80vh of Viewport) */}
       <AnimatePresence mode="wait">
         <motion.div
