@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { usePathname } from "next/navigation";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { DemoBookingModal } from "@/components/demo-booking-modal";
@@ -11,6 +12,7 @@ interface AppLayoutClientProps {
 }
 
 export function AppLayoutClient({ children }: AppLayoutClientProps) {
+  const pathname = usePathname();
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
   const [selectedCourseForDemo, setSelectedCourseForDemo] = useState<string | undefined>(undefined);
 
@@ -22,6 +24,10 @@ export function AppLayoutClient({ children }: AppLayoutClientProps) {
   const handleCloseDemoModal = () => {
     setIsDemoModalOpen(false);
   };
+
+  if (pathname === "/") {
+    return <main className="min-h-screen bg-white">{children}</main>;
+  }
 
   return (
     <div className="min-h-screen flex flex-col bg-white text-gray-900">
