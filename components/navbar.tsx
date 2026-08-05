@@ -4,17 +4,18 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { X, ChevronDown, Bell, ExternalLink, ArrowRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { BrandLogo } from "@/components/brand-logo";
 
 interface NavbarProps {
   onOpenDemoModal?: (course?: string) => void;
 }
 
-// Sleek 2-Thin-Line Hamburger Icon for Mobile
-const TwoLineHamburger = ({ className = "w-6 h-6" }: { className?: string }) => (
-  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round">
-    <line x1="4" y1="9" x2="20" y2="9" />
-    <line x1="4" y1="15" x2="20" y2="15" />
+// Increased size sleek 2-Thin-Line Hamburger Icon for Mobile
+const TwoLineHamburger = ({ className = "w-8 h-8" }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+    <line x1="3" y1="8" x2="21" y2="8" />
+    <line x1="3" y1="16" x2="21" y2="16" />
   </svg>
 );
 
@@ -185,122 +186,131 @@ export function Navbar({ onOpenDemoModal }: NavbarProps) {
               </a>
             </div>
 
-            {/* Mobile Hamburger Toggle (2 Thin Line Hamburger Icon) */}
+            {/* Mobile Hamburger Toggle (Increased Size TwoLineHamburger Icon) */}
             <div className="flex md:hidden items-center gap-3">
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-3 py-1.5 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-medium text-xs shadow-xs"
-              >
-                Free Demo
-              </a>
               <button
                 onClick={() => setMobileMenuOpen(true)}
-                className="p-2 rounded-xl text-slate-800 hover:bg-slate-100 transition-colors focus:outline-none"
+                className="p-2.5 rounded-xl text-slate-800 hover:bg-slate-100 transition-colors focus:outline-none"
                 aria-label="Open mobile menu"
               >
-                <TwoLineHamburger className="w-6 h-6 text-slate-800" />
+                <TwoLineHamburger className="w-8 h-8 text-slate-800" />
               </button>
             </div>
           </div>
         </div>
       </nav>
 
-      {/* Mobile Drawer Menu - Sliding in from the RIGHT Side */}
-      {mobileMenuOpen && (
-        <div className="fixed inset-0 z-50 md:hidden">
-          {/* Backdrop Overlay */}
-          <div
-            onClick={() => setMobileMenuOpen(false)}
-            className="fixed inset-0 bg-black/40 backdrop-blur-xs transition-opacity"
-          />
+      {/* COOL FRAMER MOTION ANIMATED SLIDE-IN MOBILE DRAWER MENU FROM RIGHT */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <div className="fixed inset-0 z-50 md:hidden">
+            {/* Backdrop Overlay with Fade */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setMobileMenuOpen(false)}
+              className="fixed inset-0 bg-slate-950/60 backdrop-blur-xs"
+            />
 
-          {/* Right Slide-In Drawer */}
-          <div className="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white shadow-2xl z-50 flex flex-col justify-between p-6 overflow-y-auto animate-in slide-in-from-right duration-300">
-            <div className="space-y-6">
-              {/* Drawer Header with Close Button */}
-              <div className="flex items-center justify-between pb-4 border-b border-slate-100">
-                <BrandLogo showSubtitle={false} size="sm" />
-                <button
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="p-2 rounded-full text-slate-600 hover:bg-slate-100 transition-colors"
-                  aria-label="Close menu"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
-
-              {/* Navigation Links inside Drawer */}
-              <div className="space-y-2">
-                <Link
-                  href="/about"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="block px-4 py-3 rounded-2xl text-base font-semibold text-slate-800 hover:bg-sky-50 hover:text-sky-700 transition-colors"
-                >
-                  About
-                </Link>
-
-                <a
-                  href="https://blog.pagelearning.in"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-between px-4 py-3 rounded-2xl text-base font-semibold text-slate-800 hover:bg-sky-50 hover:text-sky-700 transition-colors"
-                >
-                  <span>Blog</span>
-                  <ExternalLink className="w-4 h-4 text-slate-400" />
-                </a>
-
-                <Link
-                  href="/courses"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="block px-4 py-3 rounded-2xl text-base font-semibold text-slate-800 hover:bg-sky-50 hover:text-sky-700 transition-colors"
-                >
-                  Courses Catalog
-                </Link>
-
-                {/* Sub-course links */}
-                <div className="pl-4 space-y-2 border-l-2 border-sky-500 my-2">
-                  {courseItems.map((item) => (
-                    <Link
-                      key={item.path}
-                      href={item.path}
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="block py-1.5 text-sm font-medium text-slate-600 hover:text-sky-700"
-                    >
-                      • {item.title}
-                    </Link>
-                  ))}
+            {/* Right Slide-In Drawer with Spring Animation */}
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 230 }}
+              className="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white shadow-2xl z-50 flex flex-col justify-between p-6 overflow-y-auto"
+            >
+              <div className="space-y-6">
+                {/* Drawer Header with Close Button */}
+                <div className="flex items-center justify-between pb-4 border-b border-slate-100">
+                  <BrandLogo showSubtitle={false} size="sm" />
+                  <button
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="p-2 rounded-full text-slate-600 hover:bg-slate-100 transition-colors"
+                    aria-label="Close menu"
+                  >
+                    <X className="w-6 h-6" />
+                  </button>
                 </div>
 
-                <a
-                  href="https://test.pagelearning.in"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-between px-4 py-3 rounded-2xl text-base font-semibold text-slate-800 hover:bg-sky-50 hover:text-sky-700 transition-colors"
-                >
-                  <span>Mock Test Platform</span>
-                  <ExternalLink className="w-4 h-4 text-slate-400" />
-                </a>
+                {/* Navigation Links inside Drawer */}
+                <div className="space-y-2">
+                  <Link
+                    href="/about"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block px-4 py-3 rounded-2xl text-base font-semibold text-slate-800 hover:bg-sky-50 hover:text-sky-700 transition-colors"
+                  >
+                    About
+                  </Link>
+
+                  <a
+                    href="https://blog.pagelearning.in"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between px-4 py-3 rounded-2xl text-base font-semibold text-slate-800 hover:bg-sky-50 hover:text-sky-700 transition-colors"
+                  >
+                    <span>Blog</span>
+                    <ExternalLink className="w-4 h-4 text-slate-400" />
+                  </a>
+
+                  <Link
+                    href="/courses"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block px-4 py-3 rounded-2xl text-base font-semibold text-slate-800 hover:bg-sky-50 hover:text-sky-700 transition-colors"
+                  >
+                    Courses Catalog
+                  </Link>
+
+                  {/* Sub-course links */}
+                  <div className="pl-4 space-y-2 border-l-2 border-sky-500 my-2">
+                    {courseItems.map((item) => (
+                      <Link
+                        key={item.path}
+                        href={item.path}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="block py-1.5 text-sm font-medium text-slate-600 hover:text-sky-700"
+                      >
+                        • {item.title}
+                      </Link>
+                    ))}
+                  </div>
+
+                  {/* Mock Test Link */}
+                  <a
+                    href="https://test.pagelearning.in"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between px-4 py-3 rounded-2xl text-base font-semibold text-slate-800 hover:bg-sky-50 hover:text-sky-700 transition-colors"
+                  >
+                    <span>Mock Test Platform</span>
+                    <ExternalLink className="w-4 h-4 text-slate-400" />
+                  </a>
+
+                  {/* BOOK FREE DEMO BUTTON POSITIONED DIRECTLY BELOW MOCK TEST BUTTON */}
+                  <div className="pt-2">
+                    <a
+                      href={WHATSAPP_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full py-3.5 rounded-2xl bg-sky-600 hover:bg-sky-700 text-white font-extrabold text-sm text-center flex items-center justify-center gap-2 shadow-md transition-all duration-300 hover:scale-[1.02]"
+                    >
+                      <span>Book Free Demo</span>
+                      <ArrowRight className="w-4 h-4 text-white" />
+                    </a>
+                  </div>
+                </div>
               </div>
-            </div>
 
-            {/* Bottom Drawer CTA Button (Blue bg, White text) */}
-            <div className="pt-6 border-t border-slate-100">
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full py-3.5 rounded-2xl bg-sky-600 hover:bg-sky-700 text-white font-extrabold text-sm text-center flex items-center justify-center gap-2 shadow-md transition-colors"
-              >
-                <span>Book Free Demo via WhatsApp</span>
-                <ArrowRight className="w-4 h-4 text-white" />
-              </a>
-            </div>
+              {/* Drawer Footer info */}
+              <div className="pt-6 border-t border-slate-100 text-center text-xs text-slate-400 font-medium">
+                Page Learning • Thrissur, Kerala
+              </div>
 
+            </motion.div>
           </div>
-        </div>
-      )}
+        )}
+      </AnimatePresence>
     </header>
   );
 }

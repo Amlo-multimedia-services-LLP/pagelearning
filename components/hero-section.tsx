@@ -11,36 +11,42 @@ const slides = [
   {
     id: 1,
     title: "1-on-1 Personalized Tuition",
+    singleWordTag: "Tuition",
     tagline: "Class 1 to 12 • Custom study pace & 100% mentor attention.",
     image: "/images/098A3995.JPG",
   },
   {
     id: 2,
     title: "Micro Batch Programs",
+    singleWordTag: "MicroBatch",
     subtitle: "Capped strictly at 7 students per batch for active peer learning.",
     image: "/images/098A4001.JPG",
   },
   {
     id: 3,
     title: "JEE, NEET & KEAM Entrance Coaching",
+    singleWordTag: "Entrance",
     subtitle: "Proven exam strategies & 15+ years top rank track record in Thrissur.",
     image: "/images/098A4010.JPG",
   },
   {
     id: 4,
     title: "Scholarship & Competitive Prep",
+    singleWordTag: "Scholarships",
     subtitle: "Comprehensive training for NMMS, USS, LSS & Olympiads.",
     image: "/images/MAJO9010.JPG",
   },
   {
     id: 5,
     title: "Annual Merit Felicitation",
+    singleWordTag: "Felicitation",
     subtitle: "Celebrating high achievers and rank holders across Kerala.",
     image: "/images/20231224005621_IMG_5903.JPG",
   },
   {
     id: 6,
     title: "Student Academic Excellence",
+    singleWordTag: "Excellence",
     subtitle: "Dedicated mentorship fostering total subject confidence.",
     image: "/images/MAJO9011.JPG",
   },
@@ -67,7 +73,7 @@ export function HeroSection() {
   const nextSlide = slides[(currentSlide + 1) % slides.length];
 
   return (
-    <section className="relative w-full h-[90vh] min-h-[500px] p-0 m-0 overflow-hidden bg-slate-950 text-white flex flex-col justify-between">
+    <section className="relative w-full h-[80vh] min-h-[480px] p-0 m-0 overflow-hidden bg-slate-950 text-white flex flex-col justify-between">
       {/* Edge-to-Edge Background Image Carousel (80vh of Viewport) */}
       <AnimatePresence mode="wait">
         <motion.div
@@ -154,7 +160,7 @@ export function HeroSection() {
             </button>
           </div>
 
-          {/* Webandcrafts Style "Next" Slide Preview Card */}
+          {/* Webandcrafts Style "Next" Slide Preview Card (One word sub-description tag) */}
           <div
             onClick={handleNext}
             className="group cursor-pointer flex items-center gap-4 p-3 pr-5 rounded-2xl bg-slate-900/80 hover:bg-slate-900 backdrop-blur-xl border border-white/20 shadow-2xl transition-all duration-300 hover:scale-105"
@@ -172,8 +178,10 @@ export function HeroSection() {
                 <span>Next Program</span>
                 <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
               </div>
-              <div className="text-xs font-light text-white max-w-[160px] truncate">
-                {nextSlide.title}
+
+              {/* Single Word Sub Description */}
+              <div className="text-xs font-light text-white uppercase tracking-wider font-semibold">
+                {nextSlide.singleWordTag}
               </div>
 
               {/* Progress Step Bar Lines */}
