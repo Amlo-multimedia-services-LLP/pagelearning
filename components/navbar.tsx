@@ -46,7 +46,7 @@ export function Navbar({ onOpenDemoModal }: NavbarProps) {
   ];
 
   return (
-    <header className="sticky top-0 left-0 right-0 z-50 w-full h-[10vh] min-h-[64px] bg-white flex flex-col justify-center shadow-xs transition-all duration-300">
+    <header className="fixed top-0 left-0 right-0 z-50 w-full bg-white shadow-xs transition-all duration-300">
       {/* Top Announcement Banner */}
       {showAnnouncement && (
         <div className="bg-gradient-to-r from-amber-400 via-amber-300 to-amber-400 text-[#153947] px-4 py-1.5 text-xs sm:text-sm font-bold shadow-xs">
