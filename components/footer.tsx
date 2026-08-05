@@ -2,8 +2,8 @@
 
 import React from "react";
 import Link from "next/link";
-import { Phone, Mail, MapPin, MessageCircle, ArrowUp, Sparkles, ExternalLink } from "lucide-react";
-import { BrandLogo, LegacyBadge } from "@/components/brand-logo";
+import { Phone, MapPin, MessageCircle, ArrowUp, ExternalLink } from "lucide-react";
+import { BrandLogo } from "@/components/brand-logo";
 
 const InstagramIcon = ({ className = "w-4 h-4" }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -39,19 +39,19 @@ export function Footer({ onOpenDemoModal }: FooterProps) {
   };
 
   return (
-    <footer className="bg-slate-900 text-white relative overflow-hidden">
-      {/* BEFORE FOOTER SECTION */}
-      <div className="bg-gradient-to-r from-sky-900 via-sky-800 to-slate-900 border-b border-sky-800/60 py-14 px-4 sm:px-6 lg:px-8">
+    <footer className="bg-slate-50 text-slate-900 border-t border-slate-200/90 relative overflow-hidden">
+      {/* BEFORE FOOTER CTA BANNER */}
+      <div className="bg-gradient-to-r from-sky-100 via-sky-50 to-slate-50 border-b border-sky-100 py-14 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8">
           
           <div className="space-y-3 text-center lg:text-left max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#E5B44D]/20 border border-[#E5B44D]/30 text-[#E5B44D] text-xs font-extrabold uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-sky-200/60 border border-sky-300 text-sky-900 text-xs font-extrabold uppercase tracking-wider">
               <span>Start Your Learning Journey</span>
             </div>
-            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
+            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
               Ready to Experience 1-on-1 Personalized Mentorship?
             </h3>
-            <p className="text-sm sm:text-base text-sky-100/80">
+            <p className="text-sm sm:text-base text-slate-600">
               Book a free diagnostic demo session or talk to an admissions expert on WhatsApp now.
             </p>
           </div>
@@ -61,9 +61,9 @@ export function Footer({ onOpenDemoModal }: FooterProps) {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-2xl bg-[#E5B44D] hover:bg-[#d4a33c] text-[#153947] font-extrabold text-sm shadow-xl transition-transform hover:scale-105"
+              className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-2xl bg-sky-600 hover:bg-sky-700 text-white font-extrabold text-sm shadow-md transition-transform hover:scale-105"
             >
-              <MessageCircle className="w-5 h-5 fill-current text-[#153947]" />
+              <MessageCircle className="w-5 h-5 fill-current text-white" />
               <span>WhatsApp Admission Counselor</span>
             </a>
           </div>
@@ -72,47 +72,44 @@ export function Footer({ onOpenDemoModal }: FooterProps) {
       </div>
 
       {/* MAIN FOOTER */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-slate-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-slate-200">
           
-          {/* Col 1: Logo & Legacy */}
+          {/* Col 1: Logo & Overview */}
           <div className="space-y-4">
-            <div className="bg-white/90 p-2.5 rounded-2xl inline-block shadow-sm">
-              <BrandLogo showSubtitle={false} size="md" />
+            <div className="inline-block">
+              <BrandLogo showSubtitle={false} size="lg" />
             </div>
-            <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
               Developing academic confidence through 1-on-1 tuition, micro batches (max 7), and entrance coaching in Thrissur since 2011.
             </p>
-            <div>
-              <LegacyBadge className="!bg-slate-800 !border-slate-700 !text-white" />
-            </div>
           </div>
 
           {/* Col 2: Quick Links */}
           <div className="space-y-3">
-            <h4 className="text-sm font-bold uppercase tracking-wider text-sky-400">
+            <h4 className="text-sm font-bold uppercase tracking-wider text-sky-700">
               Quick Links
             </h4>
-            <ul className="space-y-2 text-xs sm:text-sm text-slate-300">
+            <ul className="space-y-2 text-xs sm:text-sm text-slate-600 font-medium">
               <li>
-                <Link href="/" className="hover:text-sky-300 transition-colors">Home</Link>
+                <Link href="/" className="hover:text-sky-700 transition-colors">Home</Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-sky-300 transition-colors">About Us</Link>
+                <Link href="/about" className="hover:text-sky-700 transition-colors">About Us</Link>
               </li>
               <li>
-                <Link href="/courses" className="hover:text-sky-300 transition-colors">All Courses</Link>
+                <Link href="/courses" className="hover:text-sky-700 transition-colors">All Courses</Link>
               </li>
               <li>
-                <a href="https://blog.pagelearning.in" target="_blank" rel="noopener noreferrer" className="hover:text-sky-300 transition-colors inline-flex items-center gap-1">
+                <a href="https://blog.pagelearning.in" target="_blank" rel="noopener noreferrer" className="hover:text-sky-700 transition-colors inline-flex items-center gap-1">
                   <span>Blog (blog.pagelearning.in)</span>
-                  <ExternalLink className="w-3 h-3 text-slate-500" />
+                  <ExternalLink className="w-3 h-3 text-slate-400" />
                 </a>
               </li>
               <li>
-                <a href="https://test.pagelearning.in" target="_blank" rel="noopener noreferrer" className="hover:text-sky-300 transition-colors inline-flex items-center gap-1">
+                <a href="https://test.pagelearning.in" target="_blank" rel="noopener noreferrer" className="hover:text-sky-700 transition-colors inline-flex items-center gap-1">
                   <span>Mock Test Platform</span>
-                  <ExternalLink className="w-3 h-3 text-slate-500" />
+                  <ExternalLink className="w-3 h-3 text-slate-400" />
                 </a>
               </li>
             </ul>
@@ -120,32 +117,32 @@ export function Footer({ onOpenDemoModal }: FooterProps) {
 
           {/* Col 3: Courses Catalog */}
           <div className="space-y-3">
-            <h4 className="text-sm font-bold uppercase tracking-wider text-sky-400">
+            <h4 className="text-sm font-bold uppercase tracking-wider text-sky-700">
               Programs
             </h4>
-            <ul className="space-y-2 text-xs sm:text-sm text-slate-300">
+            <ul className="space-y-2 text-xs sm:text-sm text-slate-600 font-medium">
               <li>
-                <Link href="/courses/individual-tuition" className="hover:text-sky-300 transition-colors">
+                <Link href="/courses/individual-tuition" className="hover:text-sky-700 transition-colors">
                   • 1-on-1 Individual Tuition
                 </Link>
               </li>
               <li>
-                <Link href="/courses/micro-batch" className="hover:text-sky-300 transition-colors">
+                <Link href="/courses/micro-batch" className="hover:text-sky-700 transition-colors">
                   • Micro Batch (Max 7 Students)
                 </Link>
               </li>
               <li>
-                <Link href="/courses/entrance-coaching" className="hover:text-sky-300 transition-colors">
+                <Link href="/courses/entrance-coaching" className="hover:text-sky-700 transition-colors">
                   • JEE, NEET & KEAM Prep
                 </Link>
               </li>
               <li>
-                <Link href="/courses/scholarships" className="hover:text-sky-300 transition-colors">
+                <Link href="/courses/scholarships" className="hover:text-sky-700 transition-colors">
                   • Scholarship Coaching (NMMS/USS)
                 </Link>
               </li>
               <li>
-                <Link href="/courses/competitive-exams" className="hover:text-sky-300 transition-colors">
+                <Link href="/courses/competitive-exams" className="hover:text-sky-700 transition-colors">
                   • Competitive Exam Prep
                 </Link>
               </li>
@@ -154,26 +151,26 @@ export function Footer({ onOpenDemoModal }: FooterProps) {
 
           {/* Col 4: Social Media & Contact */}
           <div className="space-y-4">
-            <h4 className="text-sm font-bold uppercase tracking-wider text-sky-400">
+            <h4 className="text-sm font-bold uppercase tracking-wider text-sky-700">
               Connect With Us
             </h4>
-            <div className="space-y-2 text-xs text-slate-300">
+            <div className="space-y-2 text-xs sm:text-sm text-slate-600 font-medium">
               <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-sky-400" />
-                <a href="tel:+917736164363" className="hover:text-white font-semibold">+91 77361 64363</a>
+                <Phone className="w-4 h-4 text-sky-600" />
+                <a href="tel:+917736164363" className="hover:text-sky-700 font-bold text-slate-900">+91 77361 64363</a>
               </div>
               <div className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 text-sky-400 shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-sky-600 shrink-0 mt-0.5" />
                 <span>Pakareswaran Building, Thrikkur, Thrissur, Kerala 680306</span>
               </div>
             </div>
 
             <div className="pt-2 flex items-center gap-3">
               <a
-                href="https://www.instagram.com"
+                href="https://www.instagram.com/pagelearning.in"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-full bg-slate-800 hover:bg-pink-600 text-slate-300 hover:text-white transition-colors"
+                className="p-2.5 rounded-full bg-slate-200/80 hover:bg-pink-600 text-slate-700 hover:text-white transition-colors"
                 aria-label="Instagram"
               >
                 <InstagramIcon className="w-4 h-4" />
@@ -182,7 +179,7 @@ export function Footer({ onOpenDemoModal }: FooterProps) {
                 href="https://www.facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-full bg-slate-800 hover:bg-blue-600 text-slate-300 hover:text-white transition-colors"
+                className="p-2.5 rounded-full bg-slate-200/80 hover:bg-blue-600 text-slate-700 hover:text-white transition-colors"
                 aria-label="Facebook"
               >
                 <FacebookIcon className="w-4 h-4" />
@@ -191,7 +188,7 @@ export function Footer({ onOpenDemoModal }: FooterProps) {
                 href="https://www.youtube.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-full bg-slate-800 hover:bg-red-600 text-slate-300 hover:text-white transition-colors"
+                className="p-2.5 rounded-full bg-slate-200/80 hover:bg-red-600 text-slate-700 hover:text-white transition-colors"
                 aria-label="YouTube"
               >
                 <YoutubeIcon className="w-4 h-4" />
@@ -200,7 +197,7 @@ export function Footer({ onOpenDemoModal }: FooterProps) {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-full bg-slate-800 hover:bg-emerald-600 text-slate-300 hover:text-white transition-colors"
+                className="p-2.5 rounded-full bg-slate-200/80 hover:bg-emerald-600 text-slate-700 hover:text-white transition-colors"
                 aria-label="WhatsApp"
               >
                 <MessageCircle className="w-4 h-4" />
@@ -211,7 +208,7 @@ export function Footer({ onOpenDemoModal }: FooterProps) {
         </div>
 
         {/* COPYRIGHT & FOOTER BAR */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-medium">
           <div>
             © {new Date().getFullYear()} Page Learning. All rights reserved. 15 Years of Educational Excellence.
           </div>
@@ -219,7 +216,7 @@ export function Footer({ onOpenDemoModal }: FooterProps) {
           <div className="flex items-center gap-4">
             <button
               onClick={scrollToTop}
-              className="p-2.5 rounded-xl bg-slate-800 hover:bg-sky-600 text-slate-300 hover:text-white transition-colors flex items-center gap-1.5 font-medium"
+              className="p-2.5 rounded-xl bg-slate-200/80 hover:bg-sky-600 text-slate-700 hover:text-white transition-colors flex items-center gap-1.5 font-medium"
               title="Scroll to Top"
             >
               <span>Back to Top</span>

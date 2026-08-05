@@ -3,12 +3,20 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ChevronDown, Bell, ExternalLink } from "lucide-react";
-import { BrandLogo, LegacyBadge } from "@/components/brand-logo";
+import { X, ChevronDown, Bell, ExternalLink, ArrowRight } from "lucide-react";
+import { BrandLogo } from "@/components/brand-logo";
 
 interface NavbarProps {
   onOpenDemoModal?: (course?: string) => void;
 }
+
+// Sleek 2-Thin-Line Hamburger Icon for Mobile
+const TwoLineHamburger = ({ className = "w-6 h-6" }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round">
+    <line x1="4" y1="9" x2="20" y2="9" />
+    <line x1="4" y1="15" x2="20" y2="15" />
+  </svg>
+);
 
 export function Navbar({ onOpenDemoModal }: NavbarProps) {
   const pathname = usePathname();
@@ -37,8 +45,8 @@ export function Navbar({ onOpenDemoModal }: NavbarProps) {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 w-full shadow-md transition-all duration-300">
-      {/* Top Announcement Banner (Pop-up on page load) */}
+    <header className="fixed top-0 left-0 right-0 z-50 w-full shadow-xs transition-all duration-300">
+      {/* Top Announcement Banner */}
       {showAnnouncement && (
         <div className="bg-gradient-to-r from-amber-400 via-amber-300 to-amber-400 text-[#153947] px-4 py-2 text-xs sm:text-sm font-bold shadow-xs">
           <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
@@ -72,8 +80,8 @@ export function Navbar({ onOpenDemoModal }: NavbarProps) {
         </div>
       )}
 
-      {/* Main Dark Blue Navigation Bar */}
-      <nav className="w-full bg-[#0F172A] border-b border-slate-800 py-3.5 px-4 sm:px-6 lg:px-8">
+      {/* Main WHITE Navigation Bar */}
+      <nav className="w-full bg-white border-b border-slate-200/90 py-3.5 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-between">
             {/* Logo */}
@@ -87,8 +95,8 @@ export function Navbar({ onOpenDemoModal }: NavbarProps) {
                 href="/about"
                 className={`px-3.5 py-2 rounded-xl transition-all ${
                   pathname === "/about"
-                    ? "text-[#E5B44D] font-bold bg-white/10"
-                    : "text-white hover:text-[#E5B44D] hover:bg-white/5"
+                    ? "text-sky-700 font-bold bg-sky-50"
+                    : "text-slate-700 hover:text-sky-700 hover:bg-slate-50"
                 }`}
               >
                 About
@@ -99,10 +107,10 @@ export function Navbar({ onOpenDemoModal }: NavbarProps) {
                 href="https://blog.pagelearning.in"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 px-3.5 py-2 rounded-xl text-white hover:text-[#E5B44D] hover:bg-white/5 transition-all"
+                className="inline-flex items-center gap-1 px-3.5 py-2 rounded-xl text-slate-700 hover:text-sky-700 hover:bg-slate-50 transition-all"
               >
                 <span>Blog</span>
-                <ExternalLink className="w-3 h-3 text-sky-300" />
+                <ExternalLink className="w-3 h-3 text-slate-400" />
               </a>
 
               {/* Courses Dropdown */}
@@ -115,24 +123,24 @@ export function Navbar({ onOpenDemoModal }: NavbarProps) {
                   href="/courses"
                   className={`inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl transition-all ${
                     pathname.startsWith("/courses")
-                      ? "text-[#E5B44D] font-bold bg-white/10"
-                      : "text-white hover:text-[#E5B44D] hover:bg-white/5"
+                      ? "text-sky-700 font-bold bg-sky-50"
+                      : "text-slate-700 hover:text-sky-700 hover:bg-slate-50"
                   }`}
                 >
                   <span>Courses</span>
                   <ChevronDown
                     className={`w-4 h-4 transition-transform duration-200 ${
-                      coursesDropdownOpen ? "rotate-180 text-[#E5B44D]" : "text-sky-300"
+                      coursesDropdownOpen ? "rotate-180 text-sky-700" : "text-slate-400"
                     }`}
                   />
                 </Link>
 
                 {coursesDropdownOpen && (
                   <div className="absolute top-full left-0 w-80 pt-2 animate-fade-in-up">
-                    <div className="bg-[#153947] border border-sky-800 rounded-2xl p-3 shadow-2xl space-y-1">
+                    <div className="bg-white border border-slate-200 rounded-2xl p-3 shadow-xl space-y-1">
                       <Link
                         href="/courses"
-                        className="block px-3 py-2 rounded-xl bg-[#E5B44D] text-[#153947] text-xs font-extrabold uppercase tracking-wider transition-colors mb-1"
+                        className="block px-3 py-2 rounded-xl bg-sky-600 text-white text-xs font-extrabold uppercase tracking-wider transition-colors mb-1"
                       >
                         Explore All Programs →
                       </Link>
@@ -140,12 +148,12 @@ export function Navbar({ onOpenDemoModal }: NavbarProps) {
                         <Link
                           key={course.path}
                           href={course.path}
-                          className="block p-2.5 rounded-xl hover:bg-white/10 text-white transition-colors group"
+                          className="block p-2.5 rounded-xl hover:bg-sky-50 text-slate-800 transition-colors group"
                         >
-                          <div className="text-sm font-bold text-white group-hover:text-[#E5B44D] transition-colors">
+                          <div className="text-sm font-bold text-slate-900 group-hover:text-sky-700 transition-colors">
                             {course.title}
                           </div>
-                          <div className="text-[11px] text-sky-200/80 mt-0.5">{course.desc}</div>
+                          <div className="text-[11px] text-slate-500 mt-0.5">{course.desc}</div>
                         </Link>
                       ))}
                     </div>
@@ -158,111 +166,141 @@ export function Navbar({ onOpenDemoModal }: NavbarProps) {
                 href="https://test.pagelearning.in"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 px-3.5 py-2 rounded-xl text-white hover:text-[#E5B44D] hover:bg-white/5 transition-all"
+                className="inline-flex items-center gap-1 px-3.5 py-2 rounded-xl text-slate-700 hover:text-sky-700 hover:bg-slate-50 transition-all"
               >
                 <span>Mock Test</span>
-                <ExternalLink className="w-3 h-3 text-sky-300" />
+                <ExternalLink className="w-3 h-3 text-slate-400" />
               </a>
             </div>
 
-            {/* Free Demo Yellow Button WITHOUT Sparkle Icon */}
+            {/* BLUE Button with WHITE Text (matching font style text-sm font-medium) */}
             <div className="hidden sm:flex items-center gap-3">
               <a
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-6 py-2.5 rounded-2xl bg-[#E5B44D] hover:bg-[#d4a33c] text-[#153947] font-extrabold text-sm shadow-md transition-all duration-300 hover:scale-105 active:scale-100"
+                className="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-medium text-sm shadow-xs transition-all duration-300 hover:scale-105 active:scale-100"
               >
                 Free Demo
               </a>
             </div>
 
-            {/* Mobile Hamburger Toggle */}
-            <div className="flex md:hidden items-center gap-2">
+            {/* Mobile Hamburger Toggle (2 Thin Line Hamburger Icon) */}
+            <div className="flex md:hidden items-center gap-3">
               <a
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-3.5 py-1.5 rounded-xl bg-[#E5B44D] text-[#153947] font-extrabold text-xs shadow-xs"
+                className="px-3 py-1.5 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-medium text-xs shadow-xs"
               >
                 Free Demo
               </a>
               <button
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 rounded-xl text-white hover:bg-white/10 transition-colors"
-                aria-label="Toggle menu"
+                onClick={() => setMobileMenuOpen(true)}
+                className="p-2 rounded-xl text-slate-800 hover:bg-slate-100 transition-colors focus:outline-none"
+                aria-label="Open mobile menu"
               >
-                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                <TwoLineHamburger className="w-6 h-6 text-slate-800" />
               </button>
             </div>
           </div>
         </div>
+      </nav>
 
-        {/* Mobile Drawer Menu */}
-        {mobileMenuOpen && (
-          <div className="md:hidden bg-[#0F172A] border-b border-slate-800 px-4 pt-3 pb-6 space-y-3 shadow-2xl animate-fade-in-up mt-3 rounded-b-2xl">
-            <Link
-              href="/about"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block px-4 py-2.5 rounded-xl text-base font-semibold text-white hover:bg-white/10"
-            >
-              About
-            </Link>
+      {/* Mobile Drawer Menu - Sliding in from the RIGHT Side */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-50 md:hidden">
+          {/* Backdrop Overlay */}
+          <div
+            onClick={() => setMobileMenuOpen(false)}
+            className="fixed inset-0 bg-black/40 backdrop-blur-xs transition-opacity"
+          />
 
-            <a
-              href="https://blog.pagelearning.in"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-between px-4 py-2.5 rounded-xl text-base font-semibold text-white hover:bg-white/10"
-            >
-              <span>Blog</span>
-              <ExternalLink className="w-4 h-4 text-sky-300" />
-            </a>
-
-            <Link
-              href="/courses"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block px-4 py-2.5 rounded-xl text-base font-semibold text-white hover:bg-white/10"
-            >
-              Courses Catalog
-            </Link>
-
-            <div className="pl-4 space-y-1 border-l-2 border-[#E5B44D] my-1">
-              {courseItems.map((item) => (
-                <Link
-                  key={item.path}
-                  href={item.path}
+          {/* Right Slide-In Drawer */}
+          <div className="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white shadow-2xl z-50 flex flex-col justify-between p-6 overflow-y-auto animate-in slide-in-from-right duration-300">
+            <div className="space-y-6">
+              {/* Drawer Header with Close Button */}
+              <div className="flex items-center justify-between pb-4 border-b border-slate-100">
+                <BrandLogo showSubtitle={false} size="sm" />
+                <button
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block py-1.5 text-sm font-medium text-sky-200 hover:text-[#E5B44D]"
+                  className="p-2 rounded-full text-slate-600 hover:bg-slate-100 transition-colors"
+                  aria-label="Close menu"
                 >
-                  • {item.title}
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Navigation Links inside Drawer */}
+              <div className="space-y-2">
+                <Link
+                  href="/about"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block px-4 py-3 rounded-2xl text-base font-semibold text-slate-800 hover:bg-sky-50 hover:text-sky-700 transition-colors"
+                >
+                  About
                 </Link>
-              ))}
+
+                <a
+                  href="https://blog.pagelearning.in"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between px-4 py-3 rounded-2xl text-base font-semibold text-slate-800 hover:bg-sky-50 hover:text-sky-700 transition-colors"
+                >
+                  <span>Blog</span>
+                  <ExternalLink className="w-4 h-4 text-slate-400" />
+                </a>
+
+                <Link
+                  href="/courses"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block px-4 py-3 rounded-2xl text-base font-semibold text-slate-800 hover:bg-sky-50 hover:text-sky-700 transition-colors"
+                >
+                  Courses Catalog
+                </Link>
+
+                {/* Sub-course links */}
+                <div className="pl-4 space-y-2 border-l-2 border-sky-500 my-2">
+                  {courseItems.map((item) => (
+                    <Link
+                      key={item.path}
+                      href={item.path}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="block py-1.5 text-sm font-medium text-slate-600 hover:text-sky-700"
+                    >
+                      • {item.title}
+                    </Link>
+                  ))}
+                </div>
+
+                <a
+                  href="https://test.pagelearning.in"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between px-4 py-3 rounded-2xl text-base font-semibold text-slate-800 hover:bg-sky-50 hover:text-sky-700 transition-colors"
+                >
+                  <span>Mock Test Platform</span>
+                  <ExternalLink className="w-4 h-4 text-slate-400" />
+                </a>
+              </div>
             </div>
 
-            <a
-              href="https://test.pagelearning.in"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-between px-4 py-2.5 rounded-xl text-base font-semibold text-white hover:bg-white/10"
-            >
-              <span>Mock Test Platform</span>
-              <ExternalLink className="w-4 h-4 text-sky-300" />
-            </a>
-
-            <div className="pt-3">
+            {/* Bottom Drawer CTA Button (Blue bg, White text) */}
+            <div className="pt-6 border-t border-slate-100">
               <a
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center w-full py-3 rounded-2xl bg-[#E5B44D] text-[#153947] font-extrabold text-sm shadow-md"
+                className="w-full py-3.5 rounded-2xl bg-sky-600 hover:bg-sky-700 text-white font-extrabold text-sm text-center flex items-center justify-center gap-2 shadow-md transition-colors"
               >
-                Free Demo via WhatsApp
+                <span>Book Free Demo via WhatsApp</span>
+                <ArrowRight className="w-4 h-4 text-white" />
               </a>
             </div>
+
           </div>
-        )}
-      </nav>
+        </div>
+      )}
     </header>
   );
 }
