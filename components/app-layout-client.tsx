@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import { usePathname } from "next/navigation";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
-import { DemoBookingModal } from "@/components/demo-booking-modal";
-import { NewsTicker } from "@/components/news-ticker";
+import { FloatingWhatsApp } from "@/components/floating-whatsapp";
+import { PastelBubbles } from "@/components/pastel-bubbles";
+import { LenisProvider } from "@/components/lenis-provider";
 import { CloudflareVerificationGate } from "@/components/cloudflare-verification-gate";
 
 interface AppLayoutClientProps {
@@ -13,55 +13,28 @@ interface AppLayoutClientProps {
 }
 
 export function AppLayoutClient({ children }: AppLayoutClientProps) {
-  const pathname = usePathname();
-  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
-  const [selectedCourseForDemo, setSelectedCourseForDemo] = useState<string | undefined>(undefined);
-
-  const handleOpenDemoModal = (course?: string) => {
-    setSelectedCourseForDemo(course);
-    setIsDemoModalOpen(true);
-  };
-
-  const handleCloseDemoModal = () => {
-    setIsDemoModalOpen(false);
-  };
-
-  if (pathname === "/") {
-    return (
-      <CloudflareVerificationGate>
-        <main className="min-h-screen bg-white">{children}</main>
-      </CloudflareVerificationGate>
-    );
-  }
-
   return (
     <CloudflareVerificationGate>
-      <div className="min-h-screen flex flex-col bg-white text-gray-900">
-        <div className="fixed top-0 left-0 right-0 z-50">
-          <NewsTicker />
-          <Navbar onOpenDemoModal={handleOpenDemoModal} />
+      <LenisProvider>
+        <div className="min-h-screen flex flex-col relative text-slate-900 bg-[#F4F8FE] font-sans overflow-x-hidden selection:bg-sky-200 selection:text-slate-900">
+          {/* Ambient Pastel Bubbles Background */}
+          <PastelBubbles />
+
+          {/* Sticky Transparent Navbar */}
+          <Navbar />
+
+          {/* Main Content Area */}
+          <main className="flex-1 relative z-10 w-full">
+            {children}
+          </main>
+
+          {/* Before Footer & Main Footer */}
+          <Footer />
+
+          {/* Floating WhatsApp Redirection CTA */}
+          <FloatingWhatsApp />
         </div>
-        
-        {/* Main Page Content - Margin top for sticky header + ticker */}
-        <main className="flex-1 pt-[104px]">
-          {React.Children.map(children, (child) => {
-            if (React.isValidElement(child)) {
-              return React.cloneElement(child as React.ReactElement<{ onOpenDemoModal?: (course?: string) => void }>, {
-                onOpenDemoModal: handleOpenDemoModal,
-              });
-            }
-            return child;
-          })}
-        </main>
-
-        <Footer onOpenDemoModal={handleOpenDemoModal} />
-
-        <DemoBookingModal
-          isOpen={isDemoModalOpen}
-          onClose={handleCloseDemoModal}
-          defaultCourse={selectedCourseForDemo}
-        />
-      </div>
+      </LenisProvider>
     </CloudflareVerificationGate>
   );
 }

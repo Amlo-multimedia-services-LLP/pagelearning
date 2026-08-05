@@ -2,104 +2,75 @@
 
 import React from "react";
 import Link from "next/link";
-import { Sparkles, CheckCircle2, Award, Target, MessageSquare, ArrowLeft } from "lucide-react";
+import { Sparkles, Trophy, CheckCircle2, MessageCircle, ArrowLeft, Target } from "lucide-react";
 
-interface CourseDetailProps {
-  onOpenDemoModal?: (course?: string) => void;
-}
+const WHATSAPP_URL =
+  "https://wa.me/917736164363?text=Hi%2C%20I%20want%20to%20inquire%20about%20Entrance%20Exam%20Coaching%20(JEE%2FNEET%2FKEAM)";
 
-export default function EntranceCoachingPage({ onOpenDemoModal }: CourseDetailProps) {
-  const triggerDemo = () => {
-    if (onOpenDemoModal) onOpenDemoModal("Entrance Exam Coaching");
-  };
-
-  const entranceExams = [
-    { name: "KEAM", desc: "Kerala Engineering Architecture Medical Entrance Exam preparation with state rank strategy." },
-    { name: "JEE Main & Advanced", desc: "Rigorous Math, Physics & Chemistry conceptual grounding and speed problem solving." },
-    { name: "NEET UG", desc: "Comprehensive Biology, Chemistry & Physics NCERT line-by-line mastery and mock tests." },
-    { name: "CUSAT CAT", desc: "Cochin University of Science and Technology engineering exam pattern." },
-    { name: "CUET UG", desc: "Central Universities Entrance Test domain subjects & general test coaching." },
-    { name: "CLAT & KLEE", desc: "Common Law Admission Test & Kerala Law Entrance Exam logical & legal reasoning." },
-    { name: "NCET", desc: "National Common Entrance Test for 4-Year Integrated Teacher Education Program." },
-  ];
-
+export default function EntranceCoachingPage() {
   return (
-    <div className="space-y-12 pb-16">
-      {/* Header */}
-      <section className="bg-gradient-to-r from-[#153947] via-[#2D5A6E] to-[#153947] text-white py-14 px-4 sm:px-6 lg:px-8 rounded-b-[2rem] shadow-lg">
+    <div className="space-y-12 pb-20">
+      <section className="bg-gradient-to-r from-sky-900 via-sky-800 to-slate-900 text-white py-16 px-4 sm:px-6 lg:px-8 shadow-md">
         <div className="max-w-4xl mx-auto space-y-4">
-          <Link href="/courses" className="inline-flex items-center gap-1 text-xs text-[#E5B44D] hover:underline font-semibold">
+          <Link href="/courses" className="inline-flex items-center gap-1.5 text-xs text-sky-300 hover:text-white font-semibold">
             <ArrowLeft className="w-4 h-4" />
             Back to All Courses
           </Link>
-          <div className="inline-block px-3 py-1 rounded-full bg-[#E55A45] text-white text-xs font-bold uppercase tracking-wider">
-            HIGH RANK STRATEGY
+          <div className="inline-block px-3.5 py-1 rounded-full bg-amber-400/20 text-amber-200 border border-amber-300/30 text-xs font-bold uppercase tracking-wider">
+            JEE | NEET | KEAM | CUSAT
           </div>
-          <h1 className="text-3xl sm:text-5xl font-black text-[#FFFDF7]">
+          <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
             Entrance Exam Coaching
           </h1>
-          <p className="text-base text-gray-200">
-            Focused coaching for JEE, NEET, KEAM, CUSAT, CUET, CLAT, KLEE & NCET
+          <p className="text-base text-sky-100 max-w-2xl leading-relaxed">
+            Targeted problem solving, time-saving tricks, and rank booster mock tests led by senior entrance faculties.
           </p>
         </div>
       </section>
 
-      {/* Main Content */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-        
-        {/* Overview */}
-        <div className="bg-white p-8 rounded-3xl border border-gray-200 shadow-xl space-y-4">
-          <h2 className="text-2xl font-extrabold text-[#153947]">
-            Master Entrance Exams With Expert Mentorship
+        <div className="bg-white/95 p-8 rounded-3xl border border-sky-100 shadow-md space-y-6">
+          <h2 className="text-2xl font-bold text-slate-900 tracking-tight">
+            Our Entrance Track Record & Strategy
           </h2>
-          <p className="text-sm text-gray-700 leading-relaxed">
-            Cracking competitive entrance exams requires not just knowing formulas, but mastering time management, negative marking avoidance strategies, and shortcut techniques. At Page Learning, our entrance mentors guide students through topic-wise problem sets and real-time exam simulations.
+          <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+            Cracking competitive entrance exams like JEE and NEET requires speed, accuracy, and clear concept fundamentals. Our entrance program combines rigorous daily practice papers (DPPs), chapter-wise PYQ analysis, and simulated computer-based test (CBT) mock exams.
           </p>
-        </div>
-
-        {/* Exams Covered Grid */}
-        <div className="space-y-4">
-          <h2 className="text-2xl font-extrabold text-[#153947]">Entrance Exam Tracks</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {entranceExams.map((exam, idx) => (
-              <div key={idx} className="p-5 bg-[#FFFDF7] rounded-2xl border border-gray-200 shadow-sm space-y-2">
-                <div className="flex items-center justify-between">
-                  <span className="text-lg font-bold text-[#153947]">{exam.name}</span>
-                  <span className="text-[10px] uppercase font-extrabold bg-[#E55A45]/20 text-[#E55A45] px-2.5 py-0.5 rounded-full">
-                    Target Track
-                  </span>
-                </div>
-                <p className="text-xs text-gray-600 leading-relaxed">{exam.desc}</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="p-4 bg-sky-50/70 rounded-2xl border border-sky-100 space-y-1">
+              <div className="flex items-center gap-2 font-bold text-sm text-sky-900">
+                <Target className="w-5 h-5 text-sky-600" />
+                <span>Concept Worksheets & Speed Tricks</span>
               </div>
-            ))}
+              <p className="text-xs text-slate-600">Shortcut formulas and quick calculation tactics for competitive speed.</p>
+            </div>
+            <div className="p-4 bg-sky-50/70 rounded-2xl border border-sky-100 space-y-1">
+              <div className="flex items-center gap-2 font-bold text-sm text-sky-900">
+                <Trophy className="w-5 h-5 text-amber-500" />
+                <span>Mock Rank Predictors</span>
+              </div>
+              <p className="text-xs text-slate-600">Simulated all-Kerala rank benchmarking and error analysis.</p>
+            </div>
           </div>
         </div>
 
-        {/* CTA */}
-        <div className="bg-[#153947] text-white p-8 rounded-3xl text-center space-y-4 shadow-xl border border-white/10">
-          <h3 className="text-2xl font-bold text-[#FFFDF7]">Book Your Entrance Demo Session</h3>
-          <p className="text-xs text-gray-300 max-w-md mx-auto">
-            Interact with our senior entrance mentors and get a personalized rank roadmap.
+        <div className="bg-gradient-to-r from-sky-700 to-blue-800 text-white p-8 sm:p-10 rounded-3xl text-center space-y-4 shadow-xl">
+          <h3 className="text-2xl font-bold text-white">Admissions Open for 2026-27 Entrance Batches</h3>
+          <p className="text-xs sm:text-sm text-sky-100 max-w-md mx-auto">
+            Connect with our entrance head mentor on WhatsApp to evaluate study plan options.
           </p>
-          <div className="pt-2 flex flex-col sm:flex-row justify-center gap-3">
-            <button
-              onClick={triggerDemo}
-              className="px-8 py-3.5 rounded-xl bg-[#E5B44D] hover:bg-[#F2C564] text-[#153947] font-extrabold text-sm shadow-md transition-transform hover:scale-105"
-            >
-              Book Free Demo Session
-            </button>
+          <div className="pt-2 flex justify-center">
             <a
-              href="https://wa.me/917736164363"
+              href={WHATSAPP_URL}
               target="_blank"
-              rel="noreferrer"
-              className="px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm transition-colors flex items-center justify-center gap-2"
+              rel="noopener noreferrer"
+              className="px-8 py-3.5 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-sm shadow-md transition-transform hover:scale-105 flex items-center justify-center gap-2"
             >
-              <MessageSquare className="w-4 h-4" />
-              <span>WhatsApp Us</span>
+              <MessageCircle className="w-5 h-5 fill-current" />
+              <span>Inquire Entrance Seat on WhatsApp</span>
             </a>
           </div>
         </div>
-
       </section>
     </div>
   );

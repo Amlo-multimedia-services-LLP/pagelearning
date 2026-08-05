@@ -2,10 +2,10 @@
 
 import React from "react";
 import Link from "next/link";
-import { Phone, Mail, MapPin, MessageSquare, ArrowUp, Sparkles } from "lucide-react";
-import { BrandLogo, LegacyBadge, GeometricBrandMotif } from "@/components/brand-logo";
+import { Phone, Mail, MapPin, MessageCircle, ArrowUp, Sparkles, ExternalLink } from "lucide-react";
+import { BrandLogo, LegacyBadge } from "@/components/brand-logo";
 
-const InstagramIcon = ({ className }: { className?: string }) => (
+const InstagramIcon = ({ className = "w-4 h-4" }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
@@ -13,14 +13,24 @@ const InstagramIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const FacebookIcon = ({ className }: { className?: string }) => (
+const FacebookIcon = ({ className = "w-4 h-4" }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
   </svg>
 );
 
+const YoutubeIcon = ({ className = "w-4 h-4" }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+  </svg>
+);
+
+const WHATSAPP_URL =
+  "https://wa.me/917736164363?text=Hi%2C%20I%20would%20like%20to%20connect%20with%20Page%20Learning";
+
 interface FooterProps {
-  onOpenDemoModal: (course?: string) => void;
+  onOpenDemoModal?: (course?: string) => void;
 }
 
 export function Footer({ onOpenDemoModal }: FooterProps) {
@@ -29,174 +39,196 @@ export function Footer({ onOpenDemoModal }: FooterProps) {
   };
 
   return (
-    <footer className="bg-white text-gray-900 border-t border-gray-200 relative overflow-hidden">
-      {/* Decorative Wave & Top Border Line */}
-      <div className="h-1.5 w-full bg-gradient-to-r from-[#E5B44D] via-[#41AAF0] to-[#E55A45]" />
-
-      {/* Main Footer Container */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+    <footer className="bg-slate-900 text-white relative overflow-hidden">
+      {/* BEFORE FOOTER SECTION */}
+      <div className="bg-gradient-to-r from-sky-900 via-sky-800 to-slate-900 border-b border-sky-800/60 py-14 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8">
           
-          {/* Column 1: Brand & Legacy */}
-          <div className="space-y-4">
-            <BrandLogo variant="light" className="!text-[#153947]" />
-            <p className="text-sm text-gray-500 leading-relaxed">
-              Developing confidence and excellence through personalized 1-on-1 guidance, micro batches, and expert mentorship since 2011.
+          <div className="space-y-3 text-center lg:text-left max-w-2xl">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-sky-400/10 border border-sky-400/20 text-sky-300 text-xs font-bold uppercase tracking-wider">
+              <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+              <span>Start Your Learning Journey</span>
+            </div>
+            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
+              Ready to Experience 1-on-1 Personalized Mentorship?
+            </h3>
+            <p className="text-sm sm:text-base text-sky-100/80">
+              Book a free diagnostic demo session or talk to an admissions expert on WhatsApp now.
             </p>
-            <LegacyBadge className="!bg-gray-50 !border-gray-200 !text-[#153947]" />
-            <div className="pt-2">
-              <GeometricBrandMotif className="opacity-20 mix-blend-multiply" />
+          </div>
+
+          <div className="flex flex-wrap items-center justify-center gap-4 shrink-0">
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-sm shadow-xl transition-transform hover:scale-105"
+            >
+              <MessageCircle className="w-5 h-5 fill-current" />
+              <span>WhatsApp Admission Counselor</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      {/* MAIN FOOTER */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-slate-800">
+          
+          {/* Col 1: Logo & Legacy */}
+          <div className="space-y-4">
+            <div className="bg-white/90 p-2.5 rounded-2xl inline-block shadow-sm">
+              <BrandLogo showSubtitle={false} size="md" />
+            </div>
+            <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+              Developing academic confidence through 1-on-1 tuition, micro batches (max 7), and entrance coaching in Thrissur since 2011.
+            </p>
+            <div>
+              <LegacyBadge className="!bg-slate-800 !border-slate-700 !text-white" />
             </div>
           </div>
 
-          {/* Column 2: Quick Links */}
-          <div className="space-y-4">
-            <h4 className="text-sm font-bold uppercase tracking-wider text-[#153947]">
-              Navigation
+          {/* Col 2: Quick Links */}
+          <div className="space-y-3">
+            <h4 className="text-sm font-bold uppercase tracking-wider text-sky-400">
+              Quick Links
             </h4>
-            <ul className="space-y-2.5 text-sm">
+            <ul className="space-y-2 text-xs sm:text-sm text-slate-300">
               <li>
-                <Link href="/" className="text-gray-500 hover:text-[#E5B44D] transition-colors">
-                  Home
-                </Link>
+                <Link href="/" className="hover:text-sky-300 transition-colors">Home</Link>
               </li>
               <li>
-                <Link href="/about" className="text-gray-500 hover:text-[#E5B44D] transition-colors">
-                  About Our Legacy
-                </Link>
+                <Link href="/about" className="hover:text-sky-300 transition-colors">About Us</Link>
               </li>
               <li>
-                <Link href="/courses" className="text-gray-500 hover:text-[#E5B44D] transition-colors">
-                  All Courses Overview
-                </Link>
+                <Link href="/courses" className="hover:text-sky-300 transition-colors">All Courses</Link>
               </li>
               <li>
-                <Link href="/contact" className="text-gray-500 hover:text-[#E5B44D] transition-colors">
-                  Contact Us & Campus Location
-                </Link>
-              </li>
-              <li>
-                <button
-                  onClick={() => onOpenDemoModal()}
-                  className="text-[#E5B44D] hover:underline font-semibold flex items-center gap-1.5 mt-2"
-                >
-                  <Sparkles className="w-3.5 h-3.5" />
-                  <span>Book Free Demo Session</span>
-                </button>
-              </li>
-            </ul>
-          </div>
-
-          {/* Column 3: Academic Programs */}
-          <div className="space-y-4">
-            <h4 className="text-sm font-bold uppercase tracking-wider text-[#153947]">
-              Our Programs
-            </h4>
-            <ul className="space-y-2.5 text-sm text-gray-500">
-              <li>
-                <Link href="/courses/individual-tuition" className="hover:text-gray-900 transition-colors flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-gray-300" /> Individual Tuition
-                </Link>
-              </li>
-              <li>
-                <Link href="/courses/micro-batch" className="hover:text-gray-900 transition-colors flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-gray-300" /> Micro Batch (Max 7)
-                </Link>
-              </li>
-              <li>
-                <Link href="/courses/entrance-coaching" className="hover:text-gray-900 transition-colors flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-gray-300" /> Entrance Coaching
-                </Link>
-              </li>
-              <li>
-                <Link href="/courses/scholarships" className="hover:text-gray-900 transition-colors flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-gray-300" /> Scholarship Exams
-                </Link>
-              </li>
-              <li>
-                <Link href="/courses/competitive-exams" className="hover:text-gray-900 transition-colors flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-gray-300" /> Career & Competitive
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Column 4: Contact & Socials */}
-          <div className="space-y-4">
-            <h4 className="text-sm font-bold uppercase tracking-wider text-[#153947]">
-              Get In Touch
-            </h4>
-            <div className="space-y-3 text-sm text-gray-500">
-              <div className="flex items-start gap-2.5">
-                <MapPin className="w-5 h-5 text-[#E5B44D] shrink-0 mt-0.5" />
-                <span>
-                  1st Floor, Pakareswaran Building, Palliyara, Thrikkur, Thrissur 680306
-                </span>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-[#E5B44D] shrink-0" />
-                <div className="flex flex-col">
-                  <a href="tel:+917736164363" className="hover:text-gray-900">
-                    +91 77361 64363
-                  </a>
-                </div>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-[#E5B44D] shrink-0" />
-                <a href="mailto:admin@pagelearning.in" className="hover:text-gray-900 font-medium">
-                  admin@pagelearning.in
+                <a href="https://blog.pagelearning.in" target="_blank" rel="noopener noreferrer" className="hover:text-sky-300 transition-colors inline-flex items-center gap-1">
+                  <span>Blog (blog.pagelearning.in)</span>
+                  <ExternalLink className="w-3 h-3 text-slate-500" />
                 </a>
+              </li>
+              <li>
+                <a href="https://test.pagelearning.in" target="_blank" rel="noopener noreferrer" className="hover:text-sky-300 transition-colors inline-flex items-center gap-1">
+                  <span>Mock Test Platform</span>
+                  <ExternalLink className="w-3 h-3 text-slate-500" />
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Col 3: Courses Catalog */}
+          <div className="space-y-3">
+            <h4 className="text-sm font-bold uppercase tracking-wider text-sky-400">
+              Programs
+            </h4>
+            <ul className="space-y-2 text-xs sm:text-sm text-slate-300">
+              <li>
+                <Link href="/courses/individual-tuition" className="hover:text-sky-300 transition-colors">
+                  • 1-on-1 Individual Tuition
+                </Link>
+              </li>
+              <li>
+                <Link href="/courses/micro-batch" className="hover:text-sky-300 transition-colors">
+                  • Micro Batch (Max 7 Students)
+                </Link>
+              </li>
+              <li>
+                <Link href="/courses/entrance-coaching" className="hover:text-sky-300 transition-colors">
+                  • JEE, NEET & KEAM Prep
+                </Link>
+              </li>
+              <li>
+                <Link href="/courses/scholarships" className="hover:text-sky-300 transition-colors">
+                  • Scholarship Coaching (NMMS/USS)
+                </Link>
+              </li>
+              <li>
+                <Link href="/courses/competitive-exams" className="hover:text-sky-300 transition-colors">
+                  • Competitive Exam Prep
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Col 4: Social Media & Contact */}
+          <div className="space-y-4">
+            <h4 className="text-sm font-bold uppercase tracking-wider text-sky-400">
+              Connect With Us
+            </h4>
+            <div className="space-y-2 text-xs text-slate-300">
+              <div className="flex items-center gap-2">
+                <Phone className="w-4 h-4 text-sky-400" />
+                <a href="tel:+917736164363" className="hover:text-white font-semibold">+91 77361 64363</a>
+              </div>
+              <div className="flex items-start gap-2">
+                <MapPin className="w-4 h-4 text-sky-400 shrink-0 mt-0.5" />
+                <span>Pakareswaran Building, Thrikkur, Thrissur, Kerala 680306</span>
               </div>
             </div>
 
-            {/* Social Media Links */}
             <div className="pt-2 flex items-center gap-3">
               <a
-                href="https://instagram.com/pagelearning.in"
+                href="https://www.instagram.com"
                 target="_blank"
-                rel="noreferrer"
-                className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-pink-100 hover:text-pink-600 transition-colors"
-                title="Instagram"
+                rel="noopener noreferrer"
+                className="p-2.5 rounded-full bg-slate-800 hover:bg-pink-600 text-slate-300 hover:text-white transition-colors"
+                aria-label="Instagram"
               >
                 <InstagramIcon className="w-4 h-4" />
               </a>
               <a
-                href="https://facebook.com/pagelearning.in"
+                href="https://www.facebook.com"
                 target="_blank"
-                rel="noreferrer"
-                className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-blue-100 hover:text-blue-600 transition-colors"
-                title="Facebook"
+                rel="noopener noreferrer"
+                className="p-2.5 rounded-full bg-slate-800 hover:bg-blue-600 text-slate-300 hover:text-white transition-colors"
+                aria-label="Facebook"
               >
                 <FacebookIcon className="w-4 h-4" />
               </a>
               <a
-                href="https://wa.me/917736164363"
+                href="https://www.youtube.com"
                 target="_blank"
-                rel="noreferrer"
-                className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-emerald-100 hover:text-emerald-600 transition-colors"
-                title="WhatsApp"
+                rel="noopener noreferrer"
+                className="p-2.5 rounded-full bg-slate-800 hover:bg-red-600 text-slate-300 hover:text-white transition-colors"
+                aria-label="YouTube"
               >
-                <MessageSquare className="w-4 h-4" />
+                <YoutubeIcon className="w-4 h-4" />
+              </a>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2.5 rounded-full bg-slate-800 hover:bg-emerald-600 text-slate-300 hover:text-white transition-colors"
+                aria-label="WhatsApp"
+              >
+                <MessageCircle className="w-4 h-4" />
               </a>
             </div>
           </div>
+
         </div>
 
-        {/* Bottom Bar & Back to top */}
-        <div className="mt-16 pt-8 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-400">
+        {/* COPYRIGHT & FOOTER BAR */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
           <div>
-            © 2026 Page Learning. All rights reserved. 15 Years of Educational Legacy.
+            © {new Date().getFullYear()} Page Learning. All rights reserved. 15 Years of Educational Excellence.
           </div>
+
           <div className="flex items-center gap-4">
             <button
               onClick={scrollToTop}
-              className="p-2.5 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 transition-colors"
+              className="p-2.5 rounded-xl bg-slate-800 hover:bg-sky-600 text-slate-300 hover:text-white transition-colors flex items-center gap-1.5 font-medium"
               title="Scroll to Top"
             >
+              <span>Back to Top</span>
               <ArrowUp className="w-4 h-4" />
             </button>
           </div>
         </div>
+
       </div>
     </footer>
   );
