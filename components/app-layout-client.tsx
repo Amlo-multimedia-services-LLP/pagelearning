@@ -24,7 +24,7 @@ export function AppLayoutClient({ children }: AppLayoutClientProps) {
           <Navbar />
 
           {/* Main Content Area */}
-          <main className="flex-1 relative z-10 w-full">
+          <main className="flex-1 relative z-10 w-full pt-[100px] sm:pt-[110px]">
             {children}
           </main>
 

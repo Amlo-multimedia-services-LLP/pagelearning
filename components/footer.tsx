@@ -45,8 +45,7 @@ export function Footer({ onOpenDemoModal }: FooterProps) {
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8">
           
           <div className="space-y-3 text-center lg:text-left max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-sky-400/10 border border-sky-400/20 text-sky-300 text-xs font-bold uppercase tracking-wider">
-              <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#E5B44D]/20 border border-[#E5B44D]/30 text-[#E5B44D] text-xs font-extrabold uppercase tracking-wider">
               <span>Start Your Learning Journey</span>
             </div>
             <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
@@ -62,9 +61,9 @@ export function Footer({ onOpenDemoModal }: FooterProps) {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-sm shadow-xl transition-transform hover:scale-105"
+              className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-2xl bg-[#E5B44D] hover:bg-[#d4a33c] text-[#153947] font-extrabold text-sm shadow-xl transition-transform hover:scale-105"
             >
-              <MessageCircle className="w-5 h-5 fill-current" />
+              <MessageCircle className="w-5 h-5 fill-current text-[#153947]" />
               <span>WhatsApp Admission Counselor</span>
             </a>
           </div>

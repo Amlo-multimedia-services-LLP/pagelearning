@@ -30,17 +30,11 @@ export function BrandLogo({ className = "", showSubtitle = false, size = "md" }:
 
 export function LegacyBadge({ className = "" }: { className?: string }) {
   return (
-    <div className={`inline-flex items-center gap-2.5 px-3 py-1.5 rounded-2xl bg-sky-50/90 border border-sky-200 text-slate-800 shadow-xs backdrop-blur-sm ${className}`}>
-      <img
-        src="/15 years emblem.png"
-        alt="15 Years Emblem"
-        className="w-8 h-8 object-contain shrink-0"
-      />
-      <div className="flex flex-col leading-tight">
-        <span className="text-xs font-bold tracking-tight text-sky-900">15 Years</span>
-        <span className="text-[10px] text-sky-700 font-medium">Educational Legacy</span>
-      </div>
-    </div>
+    <img
+      src="/15 years emblem.png"
+      alt="15 Years Emblem"
+      className={`h-9 w-auto object-contain transition-transform duration-300 hover:scale-105 ${className}`}
+    />
   );
 }
 

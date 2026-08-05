@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ChevronDown, Sparkles, Bell, ExternalLink } from "lucide-react";
+import { Menu, X, ChevronDown, Bell, ExternalLink } from "lucide-react";
 import { BrandLogo, LegacyBadge } from "@/components/brand-logo";
 
 interface NavbarProps {
@@ -37,16 +37,16 @@ export function Navbar({ onOpenDemoModal }: NavbarProps) {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full transition-all duration-300">
+    <header className="fixed top-0 left-0 right-0 z-50 w-full shadow-md transition-all duration-300">
       {/* Top Announcement Banner (Pop-up on page load) */}
       {showAnnouncement && (
-        <div className="bg-gradient-to-r from-sky-600 via-sky-500 to-blue-600 text-white px-4 py-2 text-xs sm:text-sm font-medium shadow-sm transition-all duration-300">
+        <div className="bg-gradient-to-r from-amber-400 via-amber-300 to-amber-400 text-[#153947] px-4 py-2 text-xs sm:text-sm font-bold shadow-xs">
           <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
             <div className="flex items-center gap-2 overflow-hidden text-ellipsis whitespace-nowrap">
-              <span className="bg-white/20 text-white text-[10px] sm:text-xs uppercase font-extrabold px-2 py-0.5 rounded-full flex items-center gap-1 shrink-0">
+              <span className="bg-[#153947] text-white text-[10px] sm:text-xs uppercase font-extrabold px-2.5 py-0.5 rounded-full flex items-center gap-1 shrink-0">
                 <Bell className="w-3 h-3 animate-bounce" /> Announcement
               </span>
-              <span className="font-semibold text-sky-50">
+              <span className="font-bold text-[#153947]">
                 🎉 Admissions Open for 2026-27! Exclusive 1-on-1 Tuition & Micro Batch Seats Reserved in Thrissur.
               </span>
             </div>
@@ -56,37 +56,30 @@ export function Navbar({ onOpenDemoModal }: NavbarProps) {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden md:inline-flex items-center gap-1 bg-white text-sky-700 hover:bg-sky-50 font-bold px-3 py-1 rounded-full text-xs transition-transform hover:scale-105 shadow-xs"
+                className="hidden md:inline-flex items-center gap-1 bg-[#153947] text-white hover:bg-slate-800 font-extrabold px-3.5 py-1 rounded-full text-xs transition-transform hover:scale-105 shadow-xs"
               >
                 <span>Reserve Seat</span>
-                <Sparkles className="w-3 h-3 text-amber-500" />
               </a>
               <button
                 onClick={() => setShowAnnouncement(false)}
-                className="p-1 hover:bg-white/20 rounded-full transition-colors focus:outline-none"
+                className="p-1 hover:bg-black/10 rounded-full transition-colors focus:outline-none text-[#153947]"
                 aria-label="Close notification"
               >
-                <X className="w-4 h-4 text-white" />
+                <X className="w-4 h-4" />
               </button>
             </div>
           </div>
         </div>
       )}
 
-      {/* Main Transparent / Glass Sticky Navigation Bar */}
-      <nav
-        className={`w-full transition-all duration-300 ${
-          isScrolled
-            ? "bg-white/85 backdrop-blur-xl border-b border-sky-100 shadow-sm py-3"
-            : "bg-white/50 backdrop-blur-md border-b border-sky-100/40 py-4"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Main Navy Blue Sticky Navigation Bar */}
+      <nav className="w-full bg-[#153947] border-b border-sky-950/60 py-3.5 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-between">
-            {/* Logo & 15 Years Legacy Emblem */}
+            {/* Logo & 15 Years Legacy Emblem without text/bg */}
             <Link href="/" className="flex items-center gap-3 group">
               <BrandLogo showSubtitle={false} size="md" />
-              <div className="hidden lg:block border-l border-sky-200/80 pl-3">
+              <div className="hidden lg:block">
                 <LegacyBadge />
               </div>
             </Link>
@@ -97,8 +90,8 @@ export function Navbar({ onOpenDemoModal }: NavbarProps) {
                 href="/about"
                 className={`px-3.5 py-2 rounded-xl transition-all ${
                   pathname === "/about"
-                    ? "text-sky-900 font-bold bg-sky-100/80"
-                    : "text-slate-700 hover:text-sky-900 hover:bg-sky-50"
+                    ? "text-[#E5B44D] font-bold bg-white/10"
+                    : "text-white hover:text-[#E5B44D] hover:bg-white/5"
                 }`}
               >
                 About
@@ -109,10 +102,10 @@ export function Navbar({ onOpenDemoModal }: NavbarProps) {
                 href="https://blog.pagelearning.in"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 px-3.5 py-2 rounded-xl text-slate-700 hover:text-sky-900 hover:bg-sky-50 transition-all"
+                className="inline-flex items-center gap-1 px-3.5 py-2 rounded-xl text-white hover:text-[#E5B44D] hover:bg-white/5 transition-all"
               >
                 <span>Blog</span>
-                <ExternalLink className="w-3 h-3 text-slate-400" />
+                <ExternalLink className="w-3 h-3 text-sky-300" />
               </a>
 
               {/* Courses Dropdown */}
@@ -125,24 +118,24 @@ export function Navbar({ onOpenDemoModal }: NavbarProps) {
                   href="/courses"
                   className={`inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl transition-all ${
                     pathname.startsWith("/courses")
-                      ? "text-sky-900 font-bold bg-sky-100/80"
-                      : "text-slate-700 hover:text-sky-900 hover:bg-sky-50"
+                      ? "text-[#E5B44D] font-bold bg-white/10"
+                      : "text-white hover:text-[#E5B44D] hover:bg-white/5"
                   }`}
                 >
                   <span>Courses</span>
                   <ChevronDown
                     className={`w-4 h-4 transition-transform duration-200 ${
-                      coursesDropdownOpen ? "rotate-180 text-sky-700" : "text-slate-400"
+                      coursesDropdownOpen ? "rotate-180 text-[#E5B44D]" : "text-sky-300"
                     }`}
                   />
                 </Link>
 
                 {coursesDropdownOpen && (
                   <div className="absolute top-full left-0 w-80 pt-2 animate-fade-in-up">
-                    <div className="bg-white/95 backdrop-blur-xl border border-sky-100 rounded-2xl p-3 shadow-xl space-y-1">
+                    <div className="bg-[#153947] border border-sky-800 rounded-2xl p-3 shadow-2xl space-y-1">
                       <Link
                         href="/courses"
-                        className="block px-3 py-2 rounded-xl bg-sky-50 hover:bg-sky-100 text-sky-900 text-xs font-bold uppercase tracking-wider transition-colors mb-1"
+                        className="block px-3 py-2 rounded-xl bg-[#E5B44D] text-[#153947] text-xs font-extrabold uppercase tracking-wider transition-colors mb-1"
                       >
                         Explore All Programs →
                       </Link>
@@ -150,12 +143,12 @@ export function Navbar({ onOpenDemoModal }: NavbarProps) {
                         <Link
                           key={course.path}
                           href={course.path}
-                          className="block p-2.5 rounded-xl hover:bg-sky-50/80 transition-colors group"
+                          className="block p-2.5 rounded-xl hover:bg-white/10 text-white transition-colors group"
                         >
-                          <div className="text-sm font-semibold text-slate-900 group-hover:text-sky-700 transition-colors">
+                          <div className="text-sm font-bold text-white group-hover:text-[#E5B44D] transition-colors">
                             {course.title}
                           </div>
-                          <div className="text-[11px] text-slate-500 mt-0.5">{course.desc}</div>
+                          <div className="text-[11px] text-sky-200/80 mt-0.5">{course.desc}</div>
                         </Link>
                       ))}
                     </div>
@@ -168,23 +161,22 @@ export function Navbar({ onOpenDemoModal }: NavbarProps) {
                 href="https://test.pagelearning.in"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 px-3.5 py-2 rounded-xl text-slate-700 hover:text-sky-900 hover:bg-sky-50 transition-all"
+                className="inline-flex items-center gap-1 px-3.5 py-2 rounded-xl text-white hover:text-[#E5B44D] hover:bg-white/5 transition-all"
               >
                 <span>Mock Test</span>
-                <ExternalLink className="w-3 h-3 text-slate-400" />
+                <ExternalLink className="w-3 h-3 text-sky-300" />
               </a>
             </div>
 
-            {/* Free Demo WhatsApp Redirect Button */}
+            {/* Free Demo Yellow Button WITHOUT Sparkle Icon */}
             <div className="hidden sm:flex items-center gap-3">
               <a
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-gradient-to-r from-sky-600 to-blue-700 hover:from-sky-700 hover:to-blue-800 text-white font-semibold text-sm shadow-md hover:shadow-lg transition-all duration-300 hover:scale-[1.02] active:scale-100"
+                className="inline-flex items-center justify-center px-6 py-2.5 rounded-2xl bg-[#E5B44D] hover:bg-[#d4a33c] text-[#153947] font-extrabold text-sm shadow-md transition-all duration-300 hover:scale-105 active:scale-100"
               >
-                <Sparkles className="w-4 h-4 text-amber-300" />
-                <span>Free Demo</span>
+                Free Demo
               </a>
             </div>
 
@@ -194,13 +186,13 @@ export function Navbar({ onOpenDemoModal }: NavbarProps) {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-3 py-1.5 rounded-xl bg-sky-600 text-white font-semibold text-xs shadow-xs"
+                className="px-3.5 py-1.5 rounded-xl bg-[#E5B44D] text-[#153947] font-extrabold text-xs shadow-xs"
               >
                 Free Demo
               </a>
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 rounded-xl text-slate-700 hover:bg-sky-50 transition-colors"
+                className="p-2 rounded-xl text-white hover:bg-white/10 transition-colors"
                 aria-label="Toggle menu"
               >
                 {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -211,11 +203,11 @@ export function Navbar({ onOpenDemoModal }: NavbarProps) {
 
         {/* Mobile Drawer Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-white/95 backdrop-blur-xl border-b border-sky-100 px-4 pt-3 pb-6 space-y-3 shadow-2xl animate-fade-in-up">
+          <div className="md:hidden bg-[#153947] border-b border-sky-800 px-4 pt-3 pb-6 space-y-3 shadow-2xl animate-fade-in-up mt-3 rounded-b-2xl">
             <Link
               href="/about"
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-4 py-2.5 rounded-xl text-base font-semibold text-slate-800 hover:bg-sky-50"
+              className="block px-4 py-2.5 rounded-xl text-base font-semibold text-white hover:bg-white/10"
             >
               About
             </Link>
@@ -224,27 +216,27 @@ export function Navbar({ onOpenDemoModal }: NavbarProps) {
               href="https://blog.pagelearning.in"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-between px-4 py-2.5 rounded-xl text-base font-semibold text-slate-800 hover:bg-sky-50"
+              className="flex items-center justify-between px-4 py-2.5 rounded-xl text-base font-semibold text-white hover:bg-white/10"
             >
               <span>Blog</span>
-              <ExternalLink className="w-4 h-4 text-slate-400" />
+              <ExternalLink className="w-4 h-4 text-sky-300" />
             </a>
 
             <Link
               href="/courses"
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-4 py-2.5 rounded-xl text-base font-semibold text-slate-800 hover:bg-sky-50"
+              className="block px-4 py-2.5 rounded-xl text-base font-semibold text-white hover:bg-white/10"
             >
               Courses Catalog
             </Link>
 
-            <div className="pl-4 space-y-1 border-l-2 border-sky-200 my-1">
+            <div className="pl-4 space-y-1 border-l-2 border-[#E5B44D] my-1">
               {courseItems.map((item) => (
                 <Link
                   key={item.path}
                   href={item.path}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block py-1.5 text-sm font-medium text-slate-600 hover:text-sky-700"
+                  className="block py-1.5 text-sm font-medium text-sky-200 hover:text-[#E5B44D]"
                 >
                   • {item.title}
                 </Link>
@@ -255,10 +247,10 @@ export function Navbar({ onOpenDemoModal }: NavbarProps) {
               href="https://test.pagelearning.in"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-between px-4 py-2.5 rounded-xl text-base font-semibold text-slate-800 hover:bg-sky-50"
+              className="flex items-center justify-between px-4 py-2.5 rounded-xl text-base font-semibold text-white hover:bg-white/10"
             >
               <span>Mock Test Platform</span>
-              <ExternalLink className="w-4 h-4 text-slate-400" />
+              <ExternalLink className="w-4 h-4 text-sky-300" />
             </a>
 
             <div className="pt-3">
@@ -266,10 +258,9 @@ export function Navbar({ onOpenDemoModal }: NavbarProps) {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 w-full py-3 rounded-2xl bg-gradient-to-r from-sky-600 to-blue-700 text-white font-bold text-sm shadow-md"
+                className="flex items-center justify-center w-full py-3 rounded-2xl bg-[#E5B44D] text-[#153947] font-extrabold text-sm shadow-md"
               >
-                <Sparkles className="w-4 h-4 text-amber-300" />
-                <span>Book Free Demo via WhatsApp</span>
+                Free Demo via WhatsApp
               </a>
             </div>
           </div>

@@ -130,7 +130,6 @@ export default function CoursesPage() {
                     {prog.badge}
                   </span>
                   <span className="text-xs font-bold text-slate-700 bg-sky-50 px-3.5 py-1 rounded-full border border-sky-100 flex items-center gap-1.5">
-                    <Sparkles className="w-3.5 h-3.5 text-amber-500" />
                     {prog.highlight}
                   </span>
                 </div>
@@ -162,18 +161,18 @@ export default function CoursesPage() {
                   href={`${WHATSAPP_URL}&text=Hi%2C%20I%20want%20to%20book%20a%20demo%20for%20${encodeURIComponent(prog.title)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full py-3.5 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-sm shadow-md transition-transform hover:scale-[1.02] flex items-center justify-center gap-2"
+                  className="w-full py-3.5 rounded-2xl bg-[#E5B44D] hover:bg-[#d4a33c] text-[#153947] font-extrabold text-sm shadow-md transition-transform hover:scale-[1.02] flex items-center justify-center gap-2"
                 >
-                  <MessageCircle className="w-4 h-4 fill-current" />
+                  <MessageCircle className="w-4 h-4 fill-current text-[#153947]" />
                   <span>Enroll via WhatsApp</span>
                 </a>
 
                 <Link
                   href={prog.path}
-                  className="w-full py-3.5 rounded-2xl bg-sky-600 hover:bg-sky-700 text-white font-bold text-sm text-center flex items-center justify-center gap-2 transition-colors shadow-sm"
+                  className="w-full py-3.5 rounded-2xl bg-[#E5B44D] hover:bg-[#d4a33c] text-[#153947] font-extrabold text-sm text-center flex items-center justify-center gap-2 transition-colors shadow-sm"
                 >
                   <span>Read Full Curriculum</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4 text-[#153947]" />
                 </Link>
               </div>
             </motion.div>

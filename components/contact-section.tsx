@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Send, MessageCircle, CheckCircle2, Sparkles } from "lucide-react";
+import { Mail, Phone, MapPin, MessageCircle, CheckCircle2 } from "lucide-react";
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -19,7 +19,6 @@ export function ContactSection() {
     e.preventDefault();
     if (!formData.name || !formData.phone) return;
 
-    // Send formatted WhatsApp message
     const text = encodeURIComponent(
       `*New Inquiry from Page Learning Website*\n\n` +
       `👤 *Name:* ${formData.name}\n` +
@@ -44,7 +43,7 @@ export function ContactSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.3 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky-100/90 border border-sky-200 text-sky-900 text-xs sm:text-sm font-semibold"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky-100/90 border border-sky-200 text-sky-900 text-xs sm:text-sm font-bold"
           >
             <Mail className="w-4 h-4 text-sky-600" />
             <span>Get in Touch</span>
@@ -115,16 +114,15 @@ export function ContactSection() {
               </p>
               <button
                 onClick={() => setSubmitted(false)}
-                className="px-6 py-2.5 rounded-xl bg-sky-100 text-sky-800 font-bold text-xs hover:bg-sky-200 transition-colors"
+                className="px-6 py-2.5 rounded-xl bg-[#E5B44D] text-[#153947] font-extrabold text-xs hover:bg-[#d4a33c] transition-colors"
               >
                 Send Another Request
               </button>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-5">
-              <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight pb-2 border-b border-sky-100 flex items-center justify-between">
-                <span>Request Free Demo & Callback</span>
-                <Sparkles className="w-5 h-5 text-amber-500" />
+              <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight pb-2 border-b border-sky-100">
+                Request Free Demo & Callback
               </h3>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -210,9 +208,9 @@ export function ContactSection() {
 
               <button
                 type="submit"
-                className="w-full py-4 rounded-2xl bg-gradient-to-r from-sky-600 to-blue-700 hover:from-sky-700 hover:to-blue-800 text-white font-bold text-base shadow-lg transition-all duration-300 hover:scale-[1.01] active:scale-100 flex items-center justify-center gap-2"
+                className="w-full py-4 rounded-2xl bg-[#E5B44D] hover:bg-[#d4a33c] text-[#153947] font-extrabold text-base shadow-lg transition-all duration-300 hover:scale-[1.01] flex items-center justify-center gap-2"
               >
-                <MessageCircle className="w-5 h-5 fill-current text-emerald-400" />
+                <MessageCircle className="w-5 h-5 fill-current text-[#153947]" />
                 <span>Submit & Chat via WhatsApp</span>
               </button>
             </form>
