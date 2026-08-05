@@ -72,16 +72,13 @@ export function Navbar({ onOpenDemoModal }: NavbarProps) {
         </div>
       )}
 
-      {/* Main Navy Blue Sticky Navigation Bar */}
-      <nav className="w-full bg-[#153947] border-b border-sky-950/60 py-3.5 px-4 sm:px-6 lg:px-8">
+      {/* Main Dark Blue Navigation Bar */}
+      <nav className="w-full bg-[#0F172A] border-b border-slate-800 py-3.5 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-between">
-            {/* Logo & 15 Years Legacy Emblem without text/bg */}
+            {/* Logo */}
             <Link href="/" className="flex items-center gap-3 group">
               <BrandLogo showSubtitle={false} size="md" />
-              <div className="hidden lg:block">
-                <LegacyBadge />
-              </div>
             </Link>
 
             {/* Desktop Nav Items */}
@@ -203,7 +200,7 @@ export function Navbar({ onOpenDemoModal }: NavbarProps) {
 
         {/* Mobile Drawer Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-[#153947] border-b border-sky-800 px-4 pt-3 pb-6 space-y-3 shadow-2xl animate-fade-in-up mt-3 rounded-b-2xl">
+          <div className="md:hidden bg-[#0F172A] border-b border-slate-800 px-4 pt-3 pb-6 space-y-3 shadow-2xl animate-fade-in-up mt-3 rounded-b-2xl">
             <Link
               href="/about"
               onClick={() => setMobileMenuOpen(false)}
