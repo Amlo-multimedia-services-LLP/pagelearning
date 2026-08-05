@@ -45,10 +45,10 @@ export function Navbar({ onOpenDemoModal }: NavbarProps) {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 w-full shadow-xs transition-all duration-300">
+    <header className="sticky top-0 left-0 right-0 z-50 w-full h-[20vh] min-h-[70px] sm:min-h-[80px] bg-white flex flex-col justify-center shadow-xs transition-all duration-300">
       {/* Top Announcement Banner */}
       {showAnnouncement && (
-        <div className="bg-gradient-to-r from-amber-400 via-amber-300 to-amber-400 text-[#153947] px-4 py-2 text-xs sm:text-sm font-bold shadow-xs">
+        <div className="bg-gradient-to-r from-amber-400 via-amber-300 to-amber-400 text-[#153947] px-4 py-1.5 text-xs sm:text-sm font-bold shadow-xs">
           <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
             <div className="flex items-center gap-2 overflow-hidden text-ellipsis whitespace-nowrap">
               <span className="bg-[#153947] text-white text-[10px] sm:text-xs uppercase font-extrabold px-2.5 py-0.5 rounded-full flex items-center gap-1 shrink-0">
@@ -81,8 +81,8 @@ export function Navbar({ onOpenDemoModal }: NavbarProps) {
       )}
 
       {/* Main WHITE Navigation Bar */}
-      <nav className="w-full bg-white border-b border-slate-200/90 py-3.5 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
+      <nav className="w-full bg-white py-2.5 px-4 sm:px-6 lg:px-8 flex-1 flex items-center">
+        <div className="max-w-7xl mx-auto w-full">
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-3 group">

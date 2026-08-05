@@ -67,8 +67,8 @@ export function HeroSection() {
   const nextSlide = slides[(currentSlide + 1) % slides.length];
 
   return (
-    <section className="relative w-full h-screen min-h-[540px] sm:min-h-[600px] p-0 m-0 overflow-hidden bg-slate-950 text-white flex flex-col justify-between">
-      {/* Edge-to-Edge Background Image Carousel */}
+    <section className="relative w-full h-[80vh] min-h-[480px] p-0 m-0 overflow-hidden bg-slate-950 text-white flex flex-col justify-between">
+      {/* Edge-to-Edge Background Image Carousel (80vh of Viewport) */}
       <AnimatePresence mode="wait">
         <motion.div
           key={slides[currentSlide].id}
@@ -89,17 +89,17 @@ export function HeroSection() {
         </motion.div>
       </AnimatePresence>
 
-      {/* Content Container aligned 100% width with mobile-optimized spacing */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto h-full flex flex-col justify-between p-4 sm:p-10 md:p-16">
+      {/* Content Container aligned 100% width */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto h-full flex flex-col justify-between p-6 sm:p-12 md:p-16">
         
-        {/* LEFT-BOTTOM ALIGNED TEXT CONTENT (Scaled for Mobile, Inter Thin/Light font with reduced kerning) */}
-        <div className="max-w-3xl space-y-3 sm:space-y-4 mb-4 sm:mb-6 mt-auto">
+        {/* LEFT-BOTTOM ALIGNED TEXT CONTENT (Inter Thin/Light font with reduced kerning) */}
+        <div className="max-w-3xl space-y-4 mb-4 sm:mb-6 mt-auto">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
             style={{ letterSpacing: "-0.035em" }}
-            className="text-2xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-white leading-[1.1] sm:leading-[1.08] tracking-tighter drop-shadow-md"
+            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-white leading-[1.08] tracking-tighter drop-shadow-md"
           >
             Prime academy for General education.
           </motion.h1>
@@ -109,7 +109,7 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
             style={{ letterSpacing: "-0.025em" }}
-            className="text-xs sm:text-base md:text-lg text-white/80 font-light leading-relaxed max-w-xl line-clamp-2 sm:line-clamp-none"
+            className="text-sm sm:text-base md:text-lg text-white/80 font-light leading-relaxed max-w-xl"
           >
             {slides[currentSlide].title} — {slides[currentSlide].tagline || slides[currentSlide].subtitle}
           </motion.p>
@@ -119,47 +119,47 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className="pt-1 sm:pt-2"
+            className="pt-2"
           >
             <a
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
               style={{ letterSpacing: "-0.025em" }}
-              className="inline-flex items-center gap-2 text-white font-light text-sm sm:text-lg hover:text-[#E5B44D] transition-colors group cursor-pointer"
+              className="inline-flex items-center gap-2 text-white font-light text-base sm:text-lg hover:text-[#E5B44D] transition-colors group cursor-pointer"
             >
               <span>Connect on WhatsApp</span>
-              <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white group-hover:text-[#E5B44D] group-hover:translate-x-1.5 transition-all duration-300" />
+              <ArrowRight className="w-4 h-4 text-white group-hover:text-[#E5B44D] group-hover:translate-x-1.5 transition-all duration-300" />
             </a>
           </motion.div>
         </div>
 
-        {/* Bottom Bar: Left Arrow Controls + Right Next Slide Preview Card (Optimized for Mobile) */}
-        <div className="flex items-end justify-between gap-3 pb-1 sm:pb-2 border-t border-white/15 pt-3 sm:pt-4">
+        {/* Bottom Bar: Left Arrow Controls + Right Next Slide Preview Card */}
+        <div className="flex items-end justify-between gap-4 pb-2 border-t border-white/15 pt-4">
           {/* Manual Arrow Controls */}
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex items-center gap-3">
             <button
               onClick={handlePrev}
-              className="p-2.5 sm:p-3 rounded-full bg-white/10 hover:bg-white/25 border border-white/20 text-white backdrop-blur-md transition-all focus:outline-none"
+              className="p-3 rounded-full bg-white/10 hover:bg-white/25 border border-white/20 text-white backdrop-blur-md transition-all focus:outline-none"
               aria-label="Previous slide"
             >
-              <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+              <ChevronLeft className="w-5 h-5" />
             </button>
             <button
               onClick={handleNext}
-              className="p-2.5 sm:p-3 rounded-full bg-white/10 hover:bg-white/25 border border-white/20 text-white backdrop-blur-md transition-all focus:outline-none"
+              className="p-3 rounded-full bg-white/10 hover:bg-white/25 border border-white/20 text-white backdrop-blur-md transition-all focus:outline-none"
               aria-label="Next slide"
             >
-              <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
+              <ChevronRight className="w-5 h-5" />
             </button>
           </div>
 
-          {/* Webandcrafts Style "Next" Slide Preview Card (Scaled down on mobile) */}
+          {/* Webandcrafts Style "Next" Slide Preview Card */}
           <div
             onClick={handleNext}
-            className="group cursor-pointer flex items-center gap-2.5 sm:gap-4 p-2 sm:p-3 pr-3 sm:pr-5 rounded-2xl bg-slate-900/80 hover:bg-slate-900 backdrop-blur-xl border border-white/20 shadow-2xl transition-all duration-300 hover:scale-105"
+            className="group cursor-pointer flex items-center gap-4 p-3 pr-5 rounded-2xl bg-slate-900/80 hover:bg-slate-900 backdrop-blur-xl border border-white/20 shadow-2xl transition-all duration-300 hover:scale-105"
           >
-            <div className="relative w-14 h-10 sm:w-20 sm:h-14 rounded-xl overflow-hidden shrink-0 border border-white/20">
+            <div className="relative w-20 h-14 rounded-xl overflow-hidden shrink-0 border border-white/20">
               <img
                 src={nextSlide.image}
                 alt={nextSlide.title}
@@ -167,22 +167,22 @@ export function HeroSection() {
               />
             </div>
 
-            <div className="space-y-0.5 sm:space-y-1">
-              <div className="text-[9px] sm:text-[10px] uppercase font-bold tracking-wider text-[#E5B44D] flex items-center gap-1">
-                <span>Next</span>
+            <div className="space-y-1">
+              <div className="text-[10px] uppercase font-bold tracking-wider text-[#E5B44D] flex items-center gap-1">
+                <span>Next Program</span>
                 <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
               </div>
-              <div className="text-[11px] sm:text-xs font-light text-white max-w-[110px] sm:max-w-[160px] truncate">
+              <div className="text-xs font-light text-white max-w-[160px] truncate">
                 {nextSlide.title}
               </div>
 
               {/* Progress Step Bar Lines */}
-              <div className="flex items-center gap-1 pt-0.5">
+              <div className="flex items-center gap-1.5 pt-1">
                 {slides.map((_, idx) => (
                   <div
                     key={idx}
-                    className={`h-0.5 sm:h-1 rounded-full transition-all duration-300 ${
-                      idx === currentSlide ? "w-3 sm:w-5 bg-[#E5B44D]" : "w-1.5 sm:w-2 bg-white/30"
+                    className={`h-1 rounded-full transition-all duration-300 ${
+                      idx === currentSlide ? "w-5 bg-[#E5B44D]" : "w-2 bg-white/30"
                     }`}
                   />
                 ))}
