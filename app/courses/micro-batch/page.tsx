@@ -29,6 +29,15 @@ export default function MicroBatchPage() {
       </section>
 
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+        {/* Official Course Poster (Actual Aspect Ratio) */}
+        <div className="w-full flex justify-center">
+          <img
+            src="/Courses/MICRO BATCH.png"
+            alt="Micro Batch Program Poster"
+            className="w-full max-w-4xl h-auto object-contain rounded-3xl shadow-xl border border-sky-100 bg-slate-900"
+          />
+        </div>
+
         <div className="bg-white/95 p-8 rounded-3xl border border-sky-100 shadow-md space-y-6">
           <h2 className="text-2xl font-bold text-slate-900 tracking-tight">
             Why Micro Batches Outperform Mega Coaching Classes

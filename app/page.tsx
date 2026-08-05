@@ -15,7 +15,7 @@ import { ContactSection } from "@/components/contact-section";
 
 export default function Home() {
   return (
-    <div className="space-y-12 sm:space-y-20 pb-16">
+    <div className="-mt-[70px] sm:-mt-[80px] space-y-12 sm:space-y-20 pb-16">
       {/* 1. Hero Section with Viewport Image Slider & 'Prime academy for General education.' heading */}
       <HeroSection />
 

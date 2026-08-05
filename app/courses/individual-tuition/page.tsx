@@ -36,6 +36,15 @@ export default function IndividualTuitionPage() {
       {/* Main Content */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         
+        {/* Official Course Poster (Actual Aspect Ratio) */}
+        <div className="w-full flex justify-center">
+          <img
+            src="/Courses/INDIVIDUAL TUTION.png"
+            alt="1-on-1 Individual Tuition Poster"
+            className="w-full max-w-4xl h-auto object-contain rounded-3xl shadow-xl border border-sky-100 bg-slate-900"
+          />
+        </div>
+
         {/* Overview Card */}
         <div className="bg-white/95 p-8 rounded-3xl border border-sky-100 shadow-md space-y-6">
           <h2 className="text-2xl font-bold text-slate-900 tracking-tight">
